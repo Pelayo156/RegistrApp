@@ -8,16 +8,16 @@
   <div id="container">
     <ion-list>
       <ion-item>
-        <ion-input label="Username" labelPlacement="floating" placeholder="Ingrese nombre de usuario"></ion-input>
+        <ion-input [(ngModel)]="correo" label="Username" labelPlacement="floating" placeholder="Ingrese nombre de usuario"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input label="Password" labelPlacement="floating" type="password" placeholder="Ingrese contraseña">
+        <ion-input [(ngModel)]="password" label="Password" labelPlacement="floating" type="password" placeholder="Ingrese contraseña">
         </ion-input>
       </ion-item>
     </ion-list>
 
-    <ion-button id="btn-login" expand="block" color="dark" shape="round">Ingresar</ion-button>
+    <ion-button id="btn-login" expand="block" color="dark" shape="round" (click)="login()">Ingresar</ion-button>
     <a id="recuperar-link" [routerLink]="['/recuperar']">Recuperar contraseña</a>
   </div>
 </ion-content>
