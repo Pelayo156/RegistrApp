@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +8,18 @@ import { NavController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  public correo: string;
+  public username: string;
   public password: any;
 
-  constructor(private navCtrl: NavController) {
-    this.correo = '';
+  constructor(private router: Router) {
+    this.username = '';
     this.password = '';
   }
 
   login() {
-    if (this.correo == 'admin@gmail.com' && this.password == '1234') {
-      this.navCtrl.navigateForward('/home');
+    if (this.username == 'admin' && this.password == '1234') {
+      const data = { username: this.username };
+      this.router.navigate(['/home'], { queryParams: data });
     } else {
       alert('Error no esta en la base de datos')
     }

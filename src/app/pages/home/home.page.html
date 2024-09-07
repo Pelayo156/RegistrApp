@@ -1,13 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Home
+      Inicio
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" [routerLink]="">Inicio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Contacto</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Nosotros</a>
+    </li>
+  </ul>
+
   <div id="container">
-    <p>Hola</p>
+    <p>Hola {{ username }}</p>
   </div>
 </ion-content>
