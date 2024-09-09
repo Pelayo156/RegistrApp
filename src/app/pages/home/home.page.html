@@ -68,14 +68,15 @@
   <ion-content [fullscreen]="true">
     <div id="container">
       <p>Hola {{ username }}</p>
-
       <ion-card *ngFor="let course of courses" class="course-card">
         <p>Porcentaje de asistencia: {{ course.attendancePercentage }}%</p>
         <ion-card-header>
-          <ion-card-title>{{ course.name }}</ion-card-title>
+          <ion-card-title id="course">{{ course.name }}</ion-card-title>
           <ion-icon slot="end" name="ellipsis-vertical"></ion-icon>
         </ion-card-header>
-        
+        <ion-card-content>
+          <ion-button (click)="toCourse(course.name)">click</ion-button>
+        </ion-card-content>
       </ion-card>
     </div>
     <ion-tabs>
