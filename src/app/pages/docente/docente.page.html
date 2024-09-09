@@ -6,29 +6,23 @@
   </ion-header>
   <ion-content class="ion-padding">
     <ion-list>
- 
       <ion-item>
         <ion-icon slot="start" name="person"></ion-icon>
         <ion-label>Perfil docente</ion-label>
       </ion-item>
-
       <ion-item>
         <ion-icon slot="start" name="folder"></ion-icon>
-        <ion-label>Archivos </ion-label>
+        <ion-label>Archivos</ion-label>
       </ion-item>
-
       <ion-item>
         <ion-icon slot="start" name="star"></ion-icon>
-        <ion-label>Favorito </ion-label>
+        <ion-label>Favorito</ion-label>
       </ion-item>
-
       <ion-item>
         <ion-icon slot="start" name="settings"></ion-icon>
-        <ion-label>Configuración </ion-label>
+        <ion-label>Configuración</ion-label>
       </ion-item>
-
       <ion-item-divider></ion-item-divider>
-
       <ion-item [routerLink]="['']" detail="false">
         <ion-icon slot="start" name="calendar"></ion-icon>
         <ion-label>Horario</ion-label>
@@ -41,16 +35,11 @@
         <ion-icon slot="start" name="people"></ion-icon>
         <ion-label>Registrar asistencia</ion-label>
       </ion-item>
-
-    
       <ion-item-divider></ion-item-divider>
-
-     
       <ion-item [routerLink]="['/ayuda']">
         <ion-icon slot="start" name="help-circle"></ion-icon>
         <ion-label>Ayuda</ion-label>
       </ion-item>
-
       <ion-item [routerLink]="['/login']">
         <ion-icon slot="start" name="log-out"></ion-icon>
         <ion-label>Cerrar Sesión</ion-label>
@@ -70,8 +59,91 @@
   </ion-header>
 
   <ion-content [fullscreen]="true">
-    <div id="container">
-      <p>Hola {{ username }}</p>
+    <div id="container" class="ion-text-center">
+      <p>Bienvenido {{ username }}</p>
+      
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" size-md="3">
+            <ion-card>
+              <ion-card-content>
+                📚
+                <p>Secciones</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="6" size-md="3">
+            <ion-card>
+              <ion-card-content>
+                📝
+                <p>Evaluaciones</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="6" size-md="3">
+            <ion-card>
+              <ion-card-content>
+                🗓️
+                <p>Asistencia</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="6" size-md="3">
+            <ion-card>
+              <ion-card-content>
+                📊
+                <p>Reportes</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="6" size-md="3">
+            <ion-card>
+              <ion-card-content>
+                💬
+                <p>Mensajes</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="6" size-md="3">
+            <ion-card>
+              <ion-card-content>
+                ✉️
+                <p>Correo</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="6" size-md="3">
+            <ion-card>
+              <ion-card-content>
+                ⚙️
+                <p>Ajustes</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <!-- Agregar pestañas -->
+      <ion-tabs>
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button tab="home">
+            <ion-icon name="play-circle"></ion-icon>
+            Clases grabadas
+          </ion-tab-button>
+          <ion-tab-button tab="calendar">
+            <ion-icon name="calendar"></ion-icon>
+            Calendario
+          </ion-tab-button>
+          <ion-tab-button tab="library">
+            <ion-icon name="library"></ion-icon>
+            Notificaciones
+          </ion-tab-button>
+          <ion-tab-button tab="search">
+            <ion-icon name="search"></ion-icon>
+            Buscar clases
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
     </div>
   </ion-content>
 </div>
