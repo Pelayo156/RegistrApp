@@ -1,25 +1,104 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Inicio
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+    
+      <ion-item>
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-label>Perfil alumno</ion-label>
+      </ion-item>
 
-<ion-header [translucent]="true">
- 
-  <ion-toolbar class="nav-toolbar">
-    <ion-buttons>
-      <ion-button [routerLink]="['/home']">🏠 Inicio</ion-button>
-      <ion-button [routerLink]="['/contacto']">📞 Contacto</ion-button>
-      <ion-button [routerLink]="['/nosotros']">ℹ️ Nosotros</ion-button>
-      <ion-button [routerLink]="['/login']">🔑 Iniciar Sesión</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+      <ion-item>
+        <ion-icon slot="start" name="folder"></ion-icon>
+        <ion-label>Archivos</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="star"></ion-icon>
+        <ion-label>Favorito</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="settings"></ion-icon>
+        <ion-label>Configuración</ion-label>
+      </ion-item>
 
-<ion-content [fullscreen]="true">
-  <div id="container">
-    <p>Hola {{ username }}</p>
-  </div>
-</ion-content>
+      <ion-item-divider></ion-item-divider>
+
+     
+      <ion-item [routerLink]="['/horario']" detail="false">
+        <ion-icon slot="start" name="calendar"></ion-icon>
+        <ion-label>Horario</ion-label>
+      </ion-item>
+      <ion-item [routerLink]="['/cursos']" detail="false">
+        <ion-icon slot="start" name="mail"></ion-icon>
+        <ion-label>Cursos</ion-label>
+      </ion-item>
+      <ion-item [routerLink]="['/asistencia']" detail="false">
+        <ion-icon slot="start" name="people"></ion-icon>
+        <ion-label>Asistencia</ion-label>
+      </ion-item>
+
+      <ion-item-divider></ion-item-divider>
+
+      <ion-item [routerLink]="['/ayuda']">
+        <ion-icon slot="start" name="help-circle"></ion-icon>
+        <ion-label>Ayuda</ion-label>
+      </ion-item>
+
+      <ion-item [routerLink]="['/login']">
+        <ion-icon slot="start" name="log-out"></ion-icon>
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="center-title">Perfil Académico</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true">
+    <div id="container">
+      <p>Hola {{ username }}</p>
+
+      <ion-card *ngFor="let course of courses" class="course-card">
+        <p>Porcentaje de asistencia: {{ course.attendancePercentage }}%</p>
+        <ion-card-header>
+          <ion-card-title>{{ course.name }}</ion-card-title>
+          <ion-icon slot="end" name="ellipsis-vertical"></ion-icon>
+        </ion-card-header>
+        
+      </ion-card>
+    </div>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="home">
+          <ion-icon name="play-circle"></ion-icon>
+          Clases grabadas
+        </ion-tab-button>
+        <ion-tab-button tab="calendar">
+          <ion-icon name="calendar"></ion-icon>
+          Calendario
+        </ion-tab-button>
+        <ion-tab-button tab="library">
+          <ion-icon name="library"></ion-icon>
+          notificaciones
+        </ion-tab-button>
+        <ion-tab-button tab="search">
+          <ion-icon name="search"></ion-icon>
+          Buscar clases
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-content>
+  
+</div>
+
