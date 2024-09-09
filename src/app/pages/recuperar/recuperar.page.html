@@ -4,11 +4,28 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="fnd">
+<ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">recuperar</ion-title>
+      <ion-title size="large"></ion-title>
     </ion-toolbar>
   </ion-header>
-  <h1>Hola</h1>
+
+  <div class="container">
+    <br>
+    <div class="title-inicio">
+      <h1>Recuperar contraseña</h1>
+    </div>
+
+    <div class="login-form">
+      <ion-item>
+        <ion-input label="Email" labelPlacement="stacked" placeholder="Ingresa tu email"></ion-input>
+      </ion-item>
+
+      <ion-button id="enviar-btn">Enviar</ion-button>
+      <div id="volver-home">
+        <a [routerLink]="['/login']">Volver</a>
+      </div>
+    </div>
+  </div>
 </ion-content>
