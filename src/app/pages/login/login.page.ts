@@ -8,24 +8,29 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  public username: string;
-  public password: any;
+  public username: string = '';
+  public password: any = '';
 
-  constructor(private router: Router) {
-    this.username = '';
-    this.password = '';
-  }
+  // Definir usuarios válidos con su ruta de redirección
+  private validUsers = [
+    { username: 'alumno', password: '12345', redirect: '/home' },
+    { username: 'docente', password: '12345', redirect: '/docente' }
+  ];
+
+  constructor(private router: Router) {}
 
   login() {
-    if (this.username == 'admin' && this.password == '1234') {
-      const data = { username: this.username };
-      this.router.navigate(['/home'], { queryParams: data });
+    
+    const user = this.validUsers.find(user => user.username === this.username && user.password === this.password);
+
+    if (user) {
+      
+      this.router.navigate([user.redirect], { queryParams: { username: this.username } });
     } else {
-      alert('Error no esta en la base de datos')
+     
+      alert('Error: las credenciales no están en la base de datos.');
     }
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

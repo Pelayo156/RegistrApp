@@ -1,0 +1,77 @@
+<ion-menu side="end" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+ 
+      <ion-item>
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-label>Perfil docente</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon slot="start" name="folder"></ion-icon>
+        <ion-label>Archivos </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon slot="start" name="star"></ion-icon>
+        <ion-label>Favorito </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon slot="start" name="settings"></ion-icon>
+        <ion-label>Configuración </ion-label>
+      </ion-item>
+
+      <ion-item-divider></ion-item-divider>
+
+      <ion-item [routerLink]="['']" detail="false">
+        <ion-icon slot="start" name="calendar"></ion-icon>
+        <ion-label>Horario</ion-label>
+      </ion-item>
+      <ion-item [routerLink]="['']" detail="false">
+        <ion-icon slot="start" name="mail"></ion-icon>
+        <ion-label>Cursos</ion-label>
+      </ion-item>
+      <ion-item [routerLink]="['']" detail="false">
+        <ion-icon slot="start" name="people"></ion-icon>
+        <ion-label>Registrar asistencia</ion-label>
+      </ion-item>
+
+    
+      <ion-item-divider></ion-item-divider>
+
+     
+      <ion-item [routerLink]="['/ayuda']">
+        <ion-icon slot="start" name="help-circle"></ion-icon>
+        <ion-label>Ayuda</ion-label>
+      </ion-item>
+
+      <ion-item [routerLink]="['/login']">
+        <ion-icon slot="start" name="log-out"></ion-icon>
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="center-title">Perfil Académico</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <div id="container">
+      <p>Hola {{ username }}</p>
+    </div>
+  </ion-content>
+</div>
