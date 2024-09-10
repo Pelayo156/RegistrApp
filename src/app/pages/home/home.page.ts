@@ -23,9 +23,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      console.log(params)
       this.username = params['username'] || 'Usuario';
-      console.log(this.username);
     });
   }
 
@@ -33,10 +31,7 @@ export class HomePage implements OnInit {
     const course = JSON.stringify(this.courses.find(c => c.name === courseName));
 
     this.route.queryParams.subscribe(params => {
-      if(params['user']) {
-        console.log(JSON.parse(params['user']));
-        this.router.navigate(['/asignatura'], {queryParams: {user: params['user'], course: course}});
-      }
+      this.router.navigate(['/asignatura'], {queryParams: {username: params['username'], course: course}});
     })
   }
 }

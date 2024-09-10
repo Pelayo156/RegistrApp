@@ -8,22 +8,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./asignatura.page.scss'],
 })
 export class AsignaturaPage implements OnInit {
+  username: string;
   name: string;
   attendancePercentage: number;
 
   constructor(private route: ActivatedRoute, private router: Router) {
+    this.username = '';
     this.name = '';
     this.attendancePercentage = 0;
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.name = JSON.parse(params['course']).name
-      this.attendancePercentage = JSON.parse(params['course']).attendancePercentage
+      this.username = params['username'];
+      this.name = JSON.parse(params['course']).name;
+      this.attendancePercentage = JSON.parse(params['course']).attendancePercentage;
     })
   }
 
   toHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home'], {queryParams: {username: this.username}});
   }
 }
