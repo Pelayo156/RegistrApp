@@ -19,13 +19,21 @@
 
     <div class="login-form">
       <ion-item>
-        <ion-input label="Email" labelPlacement="stacked" placeholder="Ingresa tu email"></ion-input>
+        <ion-input [(ngModel)]="email" label="Email" labelPlacement="stacked" placeholder="Ingresa tu email"></ion-input>
       </ion-item>
 
-      <ion-button id="enviar-btn">Enviar</ion-button>
+      <ion-button id="present-alert" class="enviar-btn" [disabled]="!emailValido()">Enviar</ion-button>
+        <ion-alert
+          trigger ="present-alert"
+          header ="Enlace enviado"
+          message = "Un correo con un enlace para restablecer tu contraseña ha sido enviado a tu correo electrónico."
+          [buttons] = "alertButtons"
+        ></ion-alert>
+
       <div id="volver-home">
         <a [routerLink]="['/login']">Volver</a>
       </div>
     </div>
   </div>
+
 </ion-content>
