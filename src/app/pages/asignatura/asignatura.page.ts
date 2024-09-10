@@ -8,15 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./asignatura.page.scss'],
 })
 export class AsignaturaPage implements OnInit {
-  courseName: string;
+  name: string;
+  attendancePercentage: number;
 
   constructor(private route: ActivatedRoute, private router: Router) {
-    this.courseName = '';
+    this.name = '';
+    this.attendancePercentage = 0;
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.courseName = params['courseName'];
+      this.name = JSON.parse(params['course']).name
+      this.attendancePercentage = JSON.parse(params['course']).attendancePercentage
     })
   }
 

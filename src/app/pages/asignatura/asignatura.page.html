@@ -4,13 +4,56 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" id="main-content">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">asignatura</ion-title>
+      <ion-title id="long-title" size="large">{{ name }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <h1>{{ courseName }}</h1>
-  <ion-button (click)="toHome()">Volver</ion-button>
+  <h3>Asistencia: {{ attendancePercentage }}%</h3>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Horario</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Lunes</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>Sala L2</p>
+          <p>11:31 - 13:40</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Miercoles</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>Sala L9</p>
+          <p>16:01 - 17:20</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Jueves</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>Sala L10</p>
+          <p>14:31 - 16:40</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+
+
+  <ion-button (click)="toHome()" color="secondary">Volver</ion-button>
 </ion-content>

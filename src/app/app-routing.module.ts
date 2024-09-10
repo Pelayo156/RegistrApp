@@ -20,8 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-  
-  
     path: 'docente',
     loadChildren: () => import('./pages/docente/docente.module').then( m => m.DocentePageModule)
   },
@@ -29,7 +27,6 @@ const routes: Routes = [
     path: 'asignatura',
     loadChildren: () => import('./pages/asignatura/asignatura.module').then( m => m.AsignaturaPageModule)
   },
-
 ];
 
 @NgModule({

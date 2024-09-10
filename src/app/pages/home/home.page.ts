@@ -14,7 +14,6 @@ export class HomePage implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {
     this.username = '';
     this.courses = [
-      
       { name: 'Arquitectura', attendancePercentage: 85 },
       { name: 'Programacion de aplicaciones moviles', attendancePercentage: 90 },
       { name: 'Estadistica descriptiva', attendancePercentage: 80 },
@@ -31,10 +30,12 @@ export class HomePage implements OnInit {
   }
 
   toCourse(courseName: string) {
+    const course = JSON.stringify(this.courses.find(c => c.name === courseName));
+
     this.route.queryParams.subscribe(params => {
       if(params['user']) {
         console.log(JSON.parse(params['user']));
-        this.router.navigate(['/asignatura'], {queryParams: {user: params['user'], courseName: courseName}});
+        this.router.navigate(['/asignatura'], {queryParams: {user: params['user'], course: course}});
       }
     })
   }

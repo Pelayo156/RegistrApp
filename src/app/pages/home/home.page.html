@@ -67,7 +67,7 @@
   </ion-header>
   <ion-content [fullscreen]="true">
     <div id="container">
-      <p>Hola {{ username }}</p>
+      <h3>Hola {{ username }}</h3>
       <ion-card *ngFor="let course of courses" class="course-card">
         <p>Porcentaje de asistencia: {{ course.attendancePercentage }}%</p>
         <ion-card-header>
@@ -75,31 +75,33 @@
           <ion-icon slot="end" name="ellipsis-vertical"></ion-icon>
         </ion-card-header>
         <ion-card-content>
-          <ion-button (click)="toCourse(course.name)">click</ion-button>
+          <ion-button (click)="toCourse(course.name)" color="secondary">Consultar</ion-button>
         </ion-card-content>
       </ion-card>
     </div>
-    <ion-tabs>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="home">
+  </ion-content>
+  <!-- Comienzo tabs (parte inferior) -->
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button fill="clear" routerLink="/recorded" color="medium">
           <ion-icon name="play-circle"></ion-icon>
           Clases grabadas
-        </ion-tab-button>
-        <ion-tab-button tab="calendar">
-          <ion-icon name="calendar"></ion-icon>
-          Calendario
-        </ion-tab-button>
-        <ion-tab-button tab="library">
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="start">
+        <ion-button fill="clear" routerLink="/library" color="medium">
           <ion-icon name="library"></ion-icon>
-          notificaciones
-        </ion-tab-button>
-        <ion-tab-button tab="search">
+          Notificaciones
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" routerLink="/search" color="medium">
           <ion-icon name="search"></ion-icon>
           Buscar clases
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
-  </ion-content>
-  
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
 </div>
 
