@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
       this.router.navigate([user.redirect], { queryParams: { username: this.username, user: JSON.stringify(user)} });
     } else {
      
-      alert('Error: las credenciales no están en la base de datos.');
+      alert('Usuario y/o contraseña incorrectos, intente nuevamente.');
     }
   }
 

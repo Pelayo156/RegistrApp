@@ -24,8 +24,6 @@ export class AsignaturaPage implements OnInit {
   }
 
   toHome() {
-    this.route.queryParams.subscribe(params => {
-      this.router.navigate(['/home'], {queryParams: {user: params['user']}});
-    })
+    this.router.navigate(['/home']);
   }
 }
