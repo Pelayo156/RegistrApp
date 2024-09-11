@@ -122,28 +122,28 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-
-      <!-- Agregar pestañas -->
-      <ion-tabs>
-        <ion-tab-bar slot="bottom">
-          <ion-tab-button tab="home">
-            <ion-icon name="play-circle"></ion-icon>
-            Clases grabadas
-          </ion-tab-button>
-          <ion-tab-button tab="calendar">
-            <ion-icon name="calendar"></ion-icon>
-            Calendario
-          </ion-tab-button>
-          <ion-tab-button tab="library">
-            <ion-icon name="library"></ion-icon>
-            Notificaciones
-          </ion-tab-button>
-          <ion-tab-button tab="search">
-            <ion-icon name="search"></ion-icon>
-            Buscar clases
-          </ion-tab-button>
-        </ion-tab-bar>
-      </ion-tabs>
     </div>
   </ion-content>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button fill="clear" routerLink="/recorded" color="medium">
+          <ion-icon name="play-circle"></ion-icon>
+          Clases grabadas
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="start">
+        <ion-button fill="clear" routerLink="/library" color="medium">
+          <ion-icon name="library"></ion-icon>
+          Notificaciones
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" routerLink="/search" color="medium">
+          <ion-icon name="search"></ion-icon>
+          Buscar clases
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
 </div>
