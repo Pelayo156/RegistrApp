@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginPage implements OnInit {
     { username: 'docente', password: '12345', redirect: '/docente' }
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private loginService: LoginService) {}
 
   login() {
     
@@ -30,6 +31,27 @@ export class LoginPage implements OnInit {
      
       alert('Usuario y/o contraseña incorrectos, intente nuevamente.');
     }
+  }
+
+  // Nueva forma (aun no implementada)
+  newLogin(username: string, password: string) {
+    let tokenUser: any = {};
+
+    // Guardar token dentro de una variable
+    this.loginService.validLogin(username, password).subscribe((res) => {
+      tokenUser = res;
+    })
+
+    // Validar que haya llegado un token válido
+    if(tokenUser.token) {
+      localStorage.setItem('tokenUser', JSON.stringify(tokenUser));
+      if(tokenUser.type == 'alumno') {
+        this.router.navigate(['/home']);
+      } else if(tokenUser.type == 'docente') {
+        this.router.navigate(['/docente'])
+      }
+    }
+    alert('Usuario y/o contraseña incorrectos, intente nuevamente.');
   }
 
   ngOnInit() {}
