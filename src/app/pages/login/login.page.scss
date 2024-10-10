@@ -22,12 +22,18 @@
   justify-content: center;
 }
 
-.container {
-  margin: auto;
-  padding: 20px;
+.login-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
+.container {
   max-width: 500px;
   width: 100%;
+  padding: 20px;
+  margin-top: 160px;
 }
 
 .panel {
@@ -57,6 +63,7 @@
 
 ion-item {
   --border-color: #6200ee;
+  --highlight-color-focused: #6200ee;
 }
 
 ion-button {
@@ -67,8 +74,8 @@ ion-button {
   --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
   --padding-top: 10px;
   --padding-bottom: 15px;
-  display: flex;
 
+  display: flex;
 }
 
 .bordert {
