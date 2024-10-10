@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
-        <div class="panel border bg-white">
+        <div class="panel bg-white">
           <div class="panel-heading">
             <h3 class="pt-3 font-weight-bold">Bienvenido</h3>
           </div>
@@ -23,29 +23,13 @@
               </div>
             </ion-list>
 
-            
-            <ion-button id="btn-login" expand="block" color="dark" shape="round" (click)="login()">Iniciar sesión</ion-button>
-
+            <ion-button (click)="login()">Iniciar sesión</ion-button>
            
             <div class="center-recover">
               <a id="recuperar-link" [routerLink]="['/recuperar']">¿Olvidaste tu contraseña?</a>
             </div>
           </div>
 
-    
-          <div class="mx-3 my-2 py-2 bordert">
-            <div class="text-center py-3">
-              <a href="https://www.facebook.com" target="_blank" class="px-2">
-                <img src="https://www.dpreview.com/files/p/articles/4698742202/facebook.jpeg" alt="">
-              </a>
-              <a href="https://www.google.com" target="_blank" class="px-2">
-                <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png" alt="">
-              </a>
-              <a href="https://www.github.com" target="_blank" class="px-2">
-                <img src="https://www.freepnglogos.com/uploads/512x512-logo-png/512x512-logo-github-icon-35.png" alt="">
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </div>
