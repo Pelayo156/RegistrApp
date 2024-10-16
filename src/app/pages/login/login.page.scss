@@ -10,11 +10,6 @@
   }
 }
 
-.login-background{
-  display: flex;
-  align-items: center;
-}
-
 .center-title {
   text-align: center;
   width: 100%;
@@ -45,7 +40,7 @@
   border: 2px solid #6200ee;
 }
 
-.panel-heading h3 {
+.panel-heading h2 {
   text-align: center;
   color: #0a0a0a;
 }
@@ -101,6 +96,4 @@ ion-button {
 .center-recover a{
   text-align: center;
   color: #6200ee;
-
 }
-

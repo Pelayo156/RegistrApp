@@ -1,39 +1,70 @@
-.container{
+.container {
     height: 100vh;
-    width: 100vw;
-    background: linear-gradient(45deg, #83B1D3, #071047, #ca5656, #6e1717);
-    background-size: 400% 400%;
-    animation: color 12s ease-in-out infinite;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+}
   
 .title-inicio {
     text-align: center;
-    margin-top: 0;
+    margin: 15px;
 }
 
-.title-inicio h1 {
-    font-weight: bold;
+.title-inicio h2 {
     margin-top: 0;
-    margin-bottom: 15px;
-    color: white;
+    margin-bottom: 50px;
+    color: black;
 }
 
 .login-form{
-    margin: 0 auto;
-    max-width: 350px;
-    padding: 30px;
+    padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px 60px 30px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px 60px 30px;
+    border: 2px solid #6200ee;
 }
 
-#volver-home {
-    text-align: center;
-    margin-top: 20px;
+.center-recover{
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
 }
 
-ion-input {
-    --background: #f9f9f9;
+.center-recover a{
+  text-align: center;
+  color: #6200ee;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+}
+
+.input-field input {
+  border: none;
+  outline: none;
+  flex-grow: 1;
+}
+
+ion-item {
+  --border-color: #6200ee;
+  --highlight-color-focused: #6200ee;
+}
+
+ion-button {
+  --background: #6200ee;
+  --background-hover: #9b55ff;
+  --color: white;
+  --border-radius: 50px;
+  --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+  --padding-top: 10px;
+  --padding-bottom: 15px;
+
+  display: flex;
 }
 
 .enviar-btn {
