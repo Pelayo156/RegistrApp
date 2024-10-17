@@ -5,15 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl: string = '';
+  private apiUrl: string = 'https://www.presenteprofe.cl/api/v1';
 
   constructor(private http: HttpClient) { }
 
-  validLogin(username: string, password: string) {
-    let user = {
-      username: username,
-      password: password
-    }
-    return this.http.post(`${this.apiUrl}/login`, user);
+  validLogin(email: string, password: string) {
+    return this.http.get(`${this.apiUrl}/auth/me?user=${email}`);
   }
 }

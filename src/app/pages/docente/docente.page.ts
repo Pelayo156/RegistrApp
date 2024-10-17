@@ -17,6 +17,12 @@ export class DocentePage implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.username = params['username'] || '';  // Asignar el valor a la propiedad
     });
+
+    // Obtener usuario autenticado
+    const user = localStorage.getItem("user");
+    if(user) {
+      console.log(JSON.parse(user));
+    }
   }
 
   // Método para cerrar sesión

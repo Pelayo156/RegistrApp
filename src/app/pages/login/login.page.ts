@@ -34,24 +34,26 @@ export class LoginPage implements OnInit {
   }
 
   // Nueva forma (aun no implementada)
-  newLogin(username: string, password: string) {
-    let tokenUser: any = {};
+  newLogin(email: string, password: string) {
+    let user: any = {};
 
-    // Guardar token dentro de una variable
-    this.loginService.validLogin(username, password).subscribe((res) => {
-      tokenUser = res;
-    })
-
-    // Validar que haya llegado un token válido
-    if(tokenUser.token) {
-      localStorage.setItem('tokenUser', JSON.stringify(tokenUser));
-      if(tokenUser.type == 'alumno') {
-        this.router.navigate(['/home']);
-      } else if(tokenUser.type == 'docente') {
-        this.router.navigate(['/docente'])
+    // Guardar usuario encontrado por la api
+    this.loginService.validLogin(email, password).subscribe((res) => {
+      user = res;
+      
+      // Guardo el usuario dentro del localStorage
+      if(user.message == "Success") {
+        localStorage.setItem("user", JSON.stringify(user));
       }
+
+      if(user.data.perfil == "docente") {
+      this.router.navigate(['/docente']);
+    } else if(user.data.perfil == "estudiante") {
+      this.router.navigate(['/home']);
+    } else {
+      alert('Usuario y/o contraseña incorrectos, intente nuevamente.');
     }
-    alert('Usuario y/o contraseña incorrectos, intente nuevamente.');
+    });
   }
 
   ngOnInit() {}
