@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { PresenteprofeService } from 'src/app/services/presenteprofe.service';
 
 @Component({
   selector: 'app-docente',
@@ -8,26 +9,38 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class DocentePage implements OnInit {
 
-  public username: string = '';  // Asegúrate de que esta propiedad esté declarada
+  public username: string = '';
+  public emailUser: string = '';
+  public cursos: any;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private presenteprofeService: PresenteprofeService) {}
 
   ngOnInit() {
-    // Obtener el nombre de usuario de los parámetros de la consulta
-    this.route.queryParams.subscribe(params => {
-      this.username = params['username'] || '';  // Asignar el valor a la propiedad
-    });
-
-    // Obtener usuario autenticado
-    const user = localStorage.getItem("user");
+    // Obtener email de usuario autenticado
+    let user = localStorage.getItem("user");
     if(user) {
-      console.log(JSON.parse(user));
+      this.emailUser = JSON.parse(user).data.correo;
+
+      // Obtener username
+      this.username = JSON.parse(user).data.nombre
+
+      // Obtener cursos del usuario
+      this.presenteprofeService.getCursos(this.emailUser).subscribe((response) => {
+        let res: any = response;
+        this.cursos = res.cursos;
+        console.log(this.cursos);
+      });
     }
   }
 
   // Método para cerrar sesión
   logout() {
-    // Aquí puedes realizar otras tareas relacionadas con el cierre de sesión, como limpiar datos de usuario
-    this.router.navigate(['/login']);  // Redirige al usuario a la página de login
+    localStorage.removeItem("user");
+    this.router.navigate(['/login']);
+  }
+
+  // Método para dirigirse al curso que elija el usuario
+  goToCurso(curso: object) {
+    this.router.navigate(['/curso-docente', curso]);
   }
 }

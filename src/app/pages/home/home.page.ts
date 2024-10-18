@@ -8,30 +8,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  username: string;
-  courses: Array<{ name: string, attendancePercentage: number }>;
+  public username: string = '';
+  public emailUser: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) {
-    this.username = '';
-    this.courses = [
-      { name: 'Arquitectura', attendancePercentage: 85 },
-      { name: 'Programacion de aplicaciones moviles', attendancePercentage: 90 },
-      { name: 'Estadistica descriptiva', attendancePercentage: 80 },
-      { name: 'Calidad de software', attendancePercentage: 88 },
-    ];
-  }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.username = params['username'] || 'Usuario';
-    });
+    // Obtener email de usuario autenticado
+    let user = localStorage.getItem("user");
+    if (user) {
+      this.emailUser = JSON.parse(user).data.correo;
+
+      // Obtener username
+      this.username = JSON.parse(user).data.nombre
+    }
   }
 
-  toCourse(courseName: string) {
-    const course = JSON.stringify(this.courses.find(c => c.name === courseName));
-
-    this.route.queryParams.subscribe(params => {
-      this.router.navigate(['/asignatura'], {queryParams: {username: params['username'], course: course}});
-    })
+  logout() {
+    localStorage.removeItem("user");
+    this.router.navigate(['/login']);
   }
 }

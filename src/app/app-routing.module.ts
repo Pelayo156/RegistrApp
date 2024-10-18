@@ -26,6 +26,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'curso-docente',
+    loadChildren: () => import('./pages/curso-docente/curso-docente.module').then( m => m.CursoDocentePageModule)
   }
 ];
 
