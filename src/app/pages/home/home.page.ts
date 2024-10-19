@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,18 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
   public username: string = '';
   public emailUser: string = '';
+  imageUrl: string | undefined;
+
+  async takePicture(){
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Uri,
+      source: CameraSource.Camera
+    });
+
+    this.imageUrl = image.webPath;
+  }
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 

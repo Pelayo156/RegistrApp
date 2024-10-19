@@ -1,17 +1,12 @@
 <div class="ion-page" id="main-content">
-  <ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title class="center-title">Perfil Académico</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
   <ion-content [fullscreen]="true">
     <h3>Bienvenido {{ username }}</h3>
-    <ion-button>Escanear código QR</ion-button>
+    <ion-button (click)="takePicture()">Escanear código QR </ion-button>
+    <img *ngIf="imageUrl" [src]="imageUrl" />
   </ion-content>
   <!-- Comienzo tabs (parte inferior) -->
+
   <ion-footer>
     <ion-toolbar>
       <ion-buttons slot="start">

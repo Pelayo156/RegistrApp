@@ -5,6 +5,7 @@
   left: 0;
   right: 0;
   top: 46%;
+  
 }
 
 #container strong {
@@ -34,21 +35,36 @@
 .course-card {
   position: relative;
   margin-bottom: 25px;
-  
+  border-radius: 20px;
   background: linear-gradient(135deg, #f0f0f0, #ffffff); 
-  
+
+  ion-card-title {
+    color: #ffffff;
+    font-weight: bold;
+  }
+  &:hover {
+    transform: scale(1.05);
+  }
 
   ion-card-header {
-    background-color: #f567b5;
-    color: #ffffff; 
+    background-color: #6200ee;
+    color: #f9f9ff; 
     border-radius: 10px 10px 0 0; 
     height: 100px; 
   }
 
   ion-card-content {
-    background-color: #ffffff; 
-    color: #fdfcfc;
+    background-color: white; 
+    color: #f9f9ff;
     padding: 16px;
     border-radius: 0 0 10px 10px;
   }
+
+  ion-button {
+    --background: #6200ee;
+    --color: white;
+    width: 100%;
+    border-radius: 8px;
+  }
+  
 }

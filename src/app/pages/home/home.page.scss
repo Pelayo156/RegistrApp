@@ -1,0 +1,31 @@
+ion-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 16px;
+    text-align: center;
+    flex-direction: column;
+
+}
+
+h3{
+    margin: 15px;
+    padding: 20px;
+    border:3px solid #6200ee;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+ion-button{
+    --background: #6200ee;
+    color:white;
+    width: 80%;
+    max-width: 300px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+}
