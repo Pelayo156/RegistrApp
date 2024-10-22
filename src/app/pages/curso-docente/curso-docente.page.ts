@@ -8,13 +8,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CursoDocentePage implements OnInit {
   public curso: any = {}; 
-
+  public texto: string = '';
+  public mostrarQr: boolean = false;
+  
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.curso = params;
       console.log(this.curso);
+      this.texto = this.curso.id;
     });
+  }
+
+  generarQr() {
+    this.mostrarQr=true;
   }
 }

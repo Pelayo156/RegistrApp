@@ -1,3 +1,9 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>cursoDocente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -15,15 +21,15 @@
       {{ curso.descripcion }}
     </ion-card-content>
   </ion-card>
+  <ion-text color="primary">
+  <ion-button (click)="generarQr()"> 
+    Generar QR
+  </ion-button>
+    </ion-text>
+    <input type="text"[(ngModel)]="texto" type="hidden">
+    <br><br>
+    <div *ngIf="mostrarQr">
+      <qrcode [qrdata]="texto" [width]="400" ></qrcode>
+    </div>
+    
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button fill="clear" routerLink="/recorded" color="medium" [routerLink]="['/docente']">
-        <ion-icon name="play-circle"></ion-icon>
-        Volver
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>

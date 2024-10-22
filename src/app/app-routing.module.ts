@@ -30,7 +30,11 @@ const routes: Routes = [
   {
     path: 'curso-docente',
     loadChildren: () => import('./pages/curso-docente/curso-docente.module').then( m => m.CursoDocentePageModule)
-  }
+  },
+
+
+  
+
 ];
 
 @NgModule({
