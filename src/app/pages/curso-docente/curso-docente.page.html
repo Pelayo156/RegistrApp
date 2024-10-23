@@ -24,7 +24,6 @@
       {{ curso.descripcion }}
     </ion-card-content>
   </ion-card>
-<<<<<<< HEAD
   <ion-text color="primary">
   <ion-button (click)="generarQr()"> 
     Generar QR
@@ -51,21 +50,3 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>
-=======
-
-  <div class="button-center">
-    <ion-button (click)="generarQr()"> 
-      Generar QR
-    </ion-button>
-  </div>
-
-  <label for="texto">.</label>
-  <input type="text" id="texto" [(ngModel)]="texto"type="hidden">
-  
-  <br><br>
-
-  <div *ngIf="mostrarQr">
-    <qrcode [qrdata]="texto" [width]="400"></qrcode>
-  </div>
-</ion-content>
->>>>>>> 2b5ff737ddba7f3e9d8db262c5bff0d10ad849c8
