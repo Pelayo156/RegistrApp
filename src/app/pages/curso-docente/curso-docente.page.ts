@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-curso-docente',
@@ -11,7 +11,7 @@ export class CursoDocentePage implements OnInit {
   public texto: string = '';
   public mostrarQr: boolean = false;
   
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -20,6 +20,12 @@ export class CursoDocentePage implements OnInit {
       this.texto = this.curso.id;
     });
   }
+
+    // Método para cerrar sesión
+    logout() {
+      localStorage.removeItem("user");
+      this.router.navigate(['/login']);
+    }
 
   generarQr() {
     this.mostrarQr=true;
