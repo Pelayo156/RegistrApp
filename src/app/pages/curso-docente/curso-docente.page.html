@@ -16,20 +16,24 @@
     <ion-card-header>
       <ion-card-title>{{ curso.nombre }}</ion-card-title>
     </ion-card-header>
-  
+
     <ion-card-content>
       {{ curso.descripcion }}
     </ion-card-content>
   </ion-card>
-  <ion-text color="primary">
-  <ion-button (click)="generarQr()"> 
-    Generar QR
-  </ion-button>
-    </ion-text>
-    <input type="text"[(ngModel)]="texto" type="hidden">
-    <br><br>
-    <div *ngIf="mostrarQr">
-      <qrcode [qrdata]="texto" [width]="400" ></qrcode>
-    </div>
-    
+
+  <div class="button-center">
+    <ion-button (click)="generarQr()"> 
+      Generar QR
+    </ion-button>
+  </div>
+
+  <label for="texto">.</label>
+  <input type="text" id="texto" [(ngModel)]="texto"type="hidden">
+  
+  <br><br>
+
+  <div *ngIf="mostrarQr">
+    <qrcode [qrdata]="texto" [width]="400"></qrcode>
+  </div>
 </ion-content>
