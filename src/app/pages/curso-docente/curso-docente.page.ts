@@ -30,4 +30,9 @@ export class CursoDocentePage implements OnInit {
   generarQr() {
     this.mostrarQr=true;
   }
+
+  toDocente() {
+    this.mostrarQr = false;
+    this.router.navigate(['/docente']);
+  }
 }

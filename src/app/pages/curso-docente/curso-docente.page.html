@@ -39,7 +39,7 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['/docente']" fill="clear" routerLink="/recorded" color="medium">
+      <ion-button (click)="toDocente()" fill="clear" routerLink="/recorded" color="medium">
         <ion-icon name="arrow-undo-outline"></ion-icon>
         Inicio
       </ion-button>
