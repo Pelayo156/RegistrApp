@@ -25,15 +25,15 @@
     </ion-card-content>
   </ion-card>
   <ion-text color="primary">
-  <ion-button (click)="generarQr()"> 
-    Generar QR
-  </ion-button>
-    </ion-text>
-    <input type="text"[(ngModel)]="texto" type="hidden">
-    <br><br>
-    <div *ngIf="mostrarQr">
-      <qrcode [qrdata]="texto" [width]="400" ></qrcode>
-    </div>
+    <ion-button (click)="generarQr()">
+      Generar QR
+    </ion-button>
+  </ion-text>
+  <input type="text" [(ngModel)]="texto" type="hidden">
+  <br><br>
+  <div *ngIf="mostrarQr">
+    <qrcode [qrdata]="texto" [width]="400"></qrcode>
+  </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
