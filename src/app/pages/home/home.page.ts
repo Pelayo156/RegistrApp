@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint, CapacitorBarcodeScannerTypeHintALLOption } from '@capacitor/barcode-scanner';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +11,15 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 export class HomePage implements OnInit {
   public username: string = '';
   public emailUser: string = '';
-  imageUrl: string | undefined;
+  result: string = ''
 
-  async takePicture(){
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: false,
-      resultType: CameraResultType.Uri,
-      source: CameraSource.Camera
+  async scan(): Promise<void> {
+    const result = await CapacitorBarcodeScanner.scanBarcode({
+      hint: CapacitorBarcodeScannerTypeHint.ALL
     });
-
-    this.imageUrl = image.webPath;
+    this.result = result.ScanResult;
   }
+
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 

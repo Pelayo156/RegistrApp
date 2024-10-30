@@ -1,9 +1,18 @@
 <div class="ion-page" id="main-content">
 
+
   <ion-content [fullscreen]="true">
     <h3>Bienvenido {{ username }}</h3>
-    <ion-button (click)="takePicture()">Escanear código QR </ion-button>
-    <img *ngIf="imageUrl" [src]="imageUrl" />
+
+    <img *ngIf="result"/>
+    {{result}}
+
+    <ion-button (click)="scan()"><ion-icon name="scan"></ion-icon>Escanear QR</ion-button>
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button (click)="scan()">
+        <ion-icon name="scan"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </ion-content>
   <!-- Comienzo tabs (parte inferior) -->
 
