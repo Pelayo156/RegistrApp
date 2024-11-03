@@ -9,20 +9,18 @@
   </ion-header>
 
   <ion-content [fullscreen]="true">
-    <ion-content [fullscreen]="true">
-      <div id="container">
-        <h3>Bienvenido {{ username }}</h3>
+    <div id="container">
+      <h3>Bienvenido {{ username }}</h3>
+      <div class="grid">
         <ion-card *ngFor="let curso of cursos" class="course-card">
-          <ion-card-header>
-            <ion-card-title id="course">{{ curso.nombre }}</ion-card-title>
-            <ion-icon slot="end" name="ellipsis-vertical"></ion-icon>
-          </ion-card-header>
+          <img [src]="curso.imagen" alt="Imagen del curso" class="course-image"/>
+          <ion-card-title class="course-title">{{ curso.nombre }}</ion-card-title>
           <ion-card-content>
-            <ion-button (click)="goToCurso(curso)">Ingresar</ion-button>
+            <ion-button expand="block" (click)="goToCurso(curso)">Ingresar</ion-button>
           </ion-card-content>
         </ion-card>
       </div>
-    </ion-content>
+    </div>
   </ion-content>
 
   <ion-footer>
