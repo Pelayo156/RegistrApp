@@ -11,13 +11,14 @@ import { User } from 'src/app/models/user';
 export class CreateUserPage implements OnInit {
 
   public user: User = {
-    rut: "",
+    run: "",
     nombre: "",
     apellido: "",
     correo: "",
-    codigoInvitacion: "",
+    codigo: "",
     perfil: ""
   };
+  alertButtons = ['Salir'];
 
   constructor(private router: Router, private presenteProfeService: PresenteprofeService) { }
 
@@ -26,8 +27,11 @@ export class CreateUserPage implements OnInit {
 
   registerUser() {
     console.log(this.user);
-    this.presenteProfeService.registerUser(this.user).subscribe((response) => {
-      console.log(response);
+    this.presenteProfeService.registerUser(this.user).subscribe((response: any) => {
+      if (response.message == 'Success') {
+        alert('Usuario registrado correctamente. Su contraseña fue enviada a su correo electrónico.')
+        this.router.navigate(['/login']);
+      }
     });
   }
 }

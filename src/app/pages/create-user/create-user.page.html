@@ -15,7 +15,7 @@
     <form (ngSubmit)="registerUser()">
       <!-- Campo RUT -->
       <ion-item>
-        <ion-input type="text" [(ngModel)]="user.rut" name="rut" labelPlacement="floating" label="RUT" placeholder="123456789" required></ion-input>
+        <ion-input type="text" [(ngModel)]="user.run" name="run" labelPlacement="floating" label="RUT" placeholder="123456789" required></ion-input>
       </ion-item>
   
       <!-- Campo Nombre -->
@@ -35,7 +35,7 @@
   
       <!-- Campo Código de invitación -->
       <ion-item>
-        <ion-input type="text" [(ngModel)]="user.codigoInvitacion" name="codigoInvitacion" labelPlacement="floating" label="Código de invitación" placeholder="Ingrese código" required></ion-input>
+        <ion-input type="text" [(ngModel)]="user.codigo" name="codigo" labelPlacement="floating" label="Código de invitación" placeholder="Ingrese código" required></ion-input>
       </ion-item>
   
       <!-- Campo Perfil -->
@@ -50,7 +50,7 @@
       <!-- Botones de acción -->
       <ion-row>
         <ion-col>
-          <ion-button expand="block" type="submit" color="primary">Registrar</ion-button>
+          <ion-button id="register-alert" expand="block" type="submit" color="primary">Registrar</ion-button>
         </ion-col>
         <ion-col>
           <ion-button expand="block" color="light" [routerLink]="['/login']">Volver</ion-button>

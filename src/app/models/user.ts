@@ -1,8 +1,8 @@
 export interface User {
-    rut: string,
+    run: string,
     nombre: string,
     apellido: string,
     correo: string,
-    codigoInvitacion: string,
+    codigo: string,
     perfil: string
 }

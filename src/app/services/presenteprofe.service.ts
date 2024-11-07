@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 
 @Injectable({
@@ -23,6 +23,10 @@ export class PresenteprofeService {
 
   // Función para registrar a usuario
   registerUser(user: User) {
-    return this.http.post(`${this.url}/usuarios`, JSON.stringify(user));
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post(`${this.url}/usuarios`, JSON.stringify(user), { headers });
   }
 }
