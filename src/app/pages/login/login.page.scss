@@ -10,6 +10,10 @@
   }
 }
 
+ion-content{
+  --background: radial-gradient(circle, rgba(64,0,156,1) 0%, rgba(180,128,255,1) 100%);
+}
+
 .center-title {
   text-align: center;
   width: 100%;
@@ -36,11 +40,11 @@
 
 .panel {
   background-color: rgba(111, 5, 172, 0.2);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px); 
   padding: 20px;
   border-radius: 10px 60px 30px;
-  border: 2px solid #6200ee;
+  border: 4px solid #b480ff;
 }
 
 .panel-heading h2 {
@@ -94,6 +98,7 @@ ion-button {
   display: flex;
   justify-content: center;
   margin-top: 15px;
+  flex-direction: column;
 }
 
 .center-recover a{
