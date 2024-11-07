@@ -23,6 +23,26 @@
           <ion-icon name="play-circle"></ion-icon>
           Cerrar sesión
         </ion-button>
+
+        <ion-button id="open-custom-dialog" expand="block"><ion-icon name="play-circle"></ion-icon>Cerrar Sesión</ion-button>
+
+        <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
+          <ng-template>
+            <div class="wrapper">
+              <h1>Seguro?</h1>
+      
+              <ion-list lines="none">
+                <ion-item button="true" detail="false" (click)="modal.dismiss()">
+                  <ion-button>No</ion-button>
+                </ion-item>
+                <ion-item button="true" detail="false" (click)="modal.dismiss()">
+                  <ion-button (click)="logout()" routerLink="/recorded">Sí</ion-button>
+                </ion-item>
+              </ion-list>
+            </div>
+          </ng-template>
+        </ion-modal>
+
       </ion-buttons>
     </ion-toolbar>
   </ion-footer>
