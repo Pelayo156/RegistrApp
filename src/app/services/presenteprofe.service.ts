@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,10 @@ export class PresenteprofeService {
   // Función para traer los cursos del usuario, que en este caso solamente está disponible para profesores
   getCursos(email: string) {
     return this.http.get(`${this.url}/cursos?user=${email}`);
+  }
+
+  // Función para registrar a usuario
+  registerUser(user: User) {
+    return this.http.post(`${this.url}/usuarios`, JSON.stringify(user));
   }
 }
