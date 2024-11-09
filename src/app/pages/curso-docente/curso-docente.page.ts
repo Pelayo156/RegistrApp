@@ -10,7 +10,14 @@ export class CursoDocentePage implements OnInit {
   public curso: any = {}; 
   public texto: string = '';
   public mostrarQr: boolean = false;
-  
+
+  // Información del profesor
+  public profesor = {
+    nombre: 'Benjamin Elias Mora Torres',
+    correo: 'bej.mora@profesor.duoc.cl',
+    seccion: 'Sección 010D',
+  };
+
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {

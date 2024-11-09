@@ -1,6 +1,4 @@
 <div class="ion-page" id="main-content">
-
-
   <ion-content [fullscreen]="true">
     <div id="container">
       <h3>Bienvenido {{ username }}</h3>
@@ -19,24 +17,22 @@
   <ion-footer>
     <ion-toolbar>
       <ion-buttons slot="end">
-        <ion-button (click)="logout()" fill="clear" routerLink="/recorded" color="medium">
-          <ion-icon name="play-circle"></ion-icon>
-          Cerrar sesión
+        <!-- Botón que abre el modal -->
+        <ion-button id="open-custom-dialog" expand="block">
+          <ion-icon name="log-out-outline"></ion-icon>Cerrar Sesión
         </ion-button>
 
-        <ion-button id="open-custom-dialog" expand="block"><ion-icon name="play-circle"></ion-icon>Cerrar Sesión</ion-button>
-
+        <!-- Modal de confirmación de cierre de sesión -->
         <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
           <ng-template>
-            <div class="wrapper">
-              <h1>Seguro?</h1>
-      
+            <div class="modal-wrapper">
+              <h2>¿Deseas cerrar sesión?</h2>
               <ion-list lines="none">
-                <ion-item button="true" detail="false" (click)="modal.dismiss()">
-                  <ion-button>No</ion-button>
+                <ion-item button="true" detail="false" (click)="logout(); modal.dismiss()">
+                  <ion-button expand="block" color="danger">Sí</ion-button>
                 </ion-item>
                 <ion-item button="true" detail="false" (click)="modal.dismiss()">
-                  <ion-button (click)="logout()" routerLink="/recorded">Sí</ion-button>
+                  <ion-button expand="block" color="light">No</ion-button>
                 </ion-item>
               </ion-list>
             </div>

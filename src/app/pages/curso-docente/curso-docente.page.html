@@ -1,26 +1,44 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>{{ curso.nombre }}</ion-title>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="toDocente()" fill="clear" routerLink="/recorded" color="medium">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col class="center-title">
+          <ion-title class="small-title">{{ curso.nombre }}</ion-title>
+        </ion-col>
+        <ion-col class="right-subtitle" size="auto">
+          <span class="subtitle">Analista Programador Computacional</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="main-content">
-  </div>
-  
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Espacio <strong>{{ curso.nombre }}</strong></ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-card>
-    <img alt="Imagen del curso" src="{{ curso.imagen }}" />
+  <ion-card class="profesor-card">
     <ion-card-header>
-      <ion-card-title>{{ curso.nombre }}</ion-card-title>
+      <ion-card-title>Información del Profesor</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      {{ curso.descripcion }}
+      <div class="profesor-info">
+        <div class="profesor-item">
+          <label>Nombre</label>
+          <p>{{ profesor.nombre }}</p>
+        </div>
+        <div class="profesor-item">
+          <label>Correo</label>
+          <p>{{ profesor.correo }}</p>
+        </div>
+        <div class="profesor-item">
+          <label>Sección</label>
+          <p>{{ profesor.seccion }}</p>
+        </div>
+      </div>
     </ion-card-content>
   </ion-card>
 
@@ -29,8 +47,6 @@
       📷 Generar QR
     </ion-button>
   </div>
-
-  <input type="text" [(ngModel)]="texto" type="hidden" title="Texto para el código QR">
 
   <div *ngIf="mostrarQr" class="qr-container">
     <div class="qr-background">
@@ -41,16 +57,9 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="toDocente()" fill="clear" routerLink="/recorded" color="medium">
-        <ion-icon name="arrow-undo-outline"></ion-icon>
-        Inicio
-      </ion-button>
-    </ion-buttons>
-    
     <ion-buttons slot="end">
       <ion-button (click)="logout()" fill="clear" routerLink="/recorded" color="medium">
-        <ion-icon name="play-circle"></ion-icon>
+        <ion-icon name="log-out-outline"></ion-icon>
         Cerrar sesión
       </ion-button>
     </ion-buttons>

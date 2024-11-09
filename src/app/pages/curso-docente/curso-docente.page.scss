@@ -39,3 +39,61 @@
   justify-content: center;
   align-items: center;
 }
+.custom-toolbar {
+  --min-height: 130px; 
+  font-size: 1.2em;
+}
+.small-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  margin-left: 1px; 
+           
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: gray;
+  margin-left: 40px; 
+}
+.profesor-card {
+  max-width: 350px;
+  margin: 20px auto;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.profesor-card-title {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.profesor-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profesor-item {
+  margin-bottom: 10px;
+}
+
+.profesor-item label {
+  font-weight: bold;
+  color: #555;
+}
+
+.profesor-item p {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+}
+
+ion-content {
+  --background: #f2f2f2; 
+}

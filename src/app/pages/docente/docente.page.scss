@@ -53,3 +53,35 @@ ion-card-content {
 ion-button {
   margin-top: -8px;
 }
+.modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-wrapper h2 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.modal-wrapper ion-button {
+  width: 80%;
+  margin: 10px 0;
+}
+
+.modal-wrapper ion-button[color="danger"] {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.modal-wrapper ion-button[color="light"] {
+  background-color: #e0e0e0;
+  color: #333;
+}
