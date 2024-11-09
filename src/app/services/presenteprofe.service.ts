@@ -13,7 +13,16 @@ export class PresenteprofeService {
 
   // Función para autentucar al usuario
   validLogin(email: string, password: string) {
-    return this.http.get(`${this.url}/auth/me?user=${email}`);
+    let user = {
+      "correo": email,
+      "password": password
+    }
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post(`${this.url}/auth`, JSON.stringify(user), { headers });
   }
 
   // Función para traer los cursos del usuario, que en este caso solamente está disponible para profesores
