@@ -27,10 +27,10 @@ export class HomePage implements OnInit {
     // Obtener email de usuario autenticado
     let user = localStorage.getItem("user");
     if (user) {
-      this.emailUser = JSON.parse(user).data.correo;
+      this.emailUser = JSON.parse(user).correo;
 
       // Obtener username
-      this.username = JSON.parse(user).data.nombre
+      this.username = JSON.parse(user).nombre
     }
   }
 

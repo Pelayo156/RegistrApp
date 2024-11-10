@@ -16,14 +16,11 @@ export class LoginPage implements OnInit {
 
   // Nueva forma (aun no implementada)
   newLogin(email: string, password: string) {
-    let user = {
-      "email": "",
-      "token": ""
-    };
+    let user: any = {};
 
     // Guardar usuario encontrado por la api
     this.presenteprofeService.validLogin(email, password).subscribe((res: any) => {
-      user.email = res.data.correo;
+      user = res.data;
       user.token = res.auth.token;
 
       // Guardo el usuario dentro del localStorage
@@ -35,9 +32,10 @@ export class LoginPage implements OnInit {
       this.router.navigate(['/docente']);
     } else if(res.data.perfil == "estudiante") {
       this.router.navigate(['/home']);
-    } else {
-      alert('Usuario y/o contraseña incorrectos, intente nuevamente.');
     }
+    }, error => {
+      alert('Usuario y/o contraseña incorrectos, intente nuevamente.');
+      console.log(error);
     });
   }
 
