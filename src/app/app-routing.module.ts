@@ -19,10 +19,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/docente/docente.module').then(m => m.DocentePageModule)
   },
   {
-    path: 'asignatura',
-    loadChildren: () => import('./pages/asignatura/asignatura.module').then(m => m.AsignaturaPageModule)
-  },
-  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
@@ -35,10 +31,10 @@ const routes: Routes = [
     path: 'create-user',
     loadChildren: () => import('./pages/create-user/create-user.module').then( m => m.CreateUserPageModule)
   },
-
-
-  
-
+  {
+    path: 'create-course',
+    loadChildren: () => import('./pages/create-course/create-course.module').then( m => m.CreateCoursePageModule)
+  },
 ];
 
 @NgModule({

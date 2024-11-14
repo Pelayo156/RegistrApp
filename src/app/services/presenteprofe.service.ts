@@ -38,4 +38,11 @@ export class PresenteprofeService {
 
     return this.http.post(`${this.url}/usuarios`, JSON.stringify(user), { headers });
   }
+
+  // Función para registrar asistencia
+  registerAttendance(code: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+  }
 }
