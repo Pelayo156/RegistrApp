@@ -1,13 +1,33 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>create-course</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">create-course</ion-title>
     </ion-toolbar>
   </ion-header>
+
+
+  <form>
+    <h1>hola</h1>
+
+    <div class="inpbox">
+      <input type="text">
+    </div>
+  </form>
+    <div class="btn">
+      <ion-button>Agregar Curso</ion-button>
+    </div>
+  </div>
+
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" routerLink="/docente" color="medium">
+        <ion-icon name="log-out-outline"></ion-icon>
+        Volver
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
