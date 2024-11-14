@@ -33,16 +33,19 @@ export class PresenteprofeService {
   // Función para registrar a usuario
   registerUser(user: User) {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     });
 
     return this.http.post(`${this.url}/usuarios`, JSON.stringify(user), { headers });
   }
 
   // Función para registrar asistencia
-  registerAttendance(code: string) {
+  registerAttendance(code: string, token: string) {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer' + token
     });
+
+    //return this.http.post(`${this.url}/cursos`);
   }
 }
