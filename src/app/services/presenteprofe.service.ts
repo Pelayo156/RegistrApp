@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
+import { Curso } from '../models/curso';
 
 @Injectable({
   providedIn: 'root'
@@ -39,13 +40,13 @@ export class PresenteprofeService {
     return this.http.post(`${this.url}/usuarios`, JSON.stringify(user), { headers });
   }
 
-  // Función para registrar asistencia
-  registerAttendance(code: string, token: string) {
+  // Función para registrar curso
+  createCourse(curso: Curso, token: string) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer' + token
+      'Authorization': 'Bearer ' + token
     });
 
-    //return this.http.post(`${this.url}/cursos`);
+    return this.http.post(`${this.url}/cursos`, JSON.stringify(curso), { headers });
   }
 }
