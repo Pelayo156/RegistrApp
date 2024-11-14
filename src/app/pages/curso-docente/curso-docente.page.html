@@ -20,39 +20,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card class="profesor-card">
-    <ion-card-header>
-      <ion-card-title>Información del Profesor</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <div class="profesor-info">
-        <div class="profesor-item">
-          <label>Nombre</label>
-          <p>{{ profesor.nombre }}</p>
-        </div>
-        <div class="profesor-item">
-          <label>Correo</label>
-          <p>{{ profesor.correo }}</p>
-        </div>
-        <div class="profesor-item">
-          <label>Sección</label>
-          <p>{{ profesor.seccion }}</p>
-        </div>
-      </div>
-    </ion-card-content>
-  </ion-card>
 
   <div class="button-container">
-    <ion-button (click)="generarQr()" color="medium" class="qr-button">
-      📷 Generar QR
-    </ion-button>
+    <ion-button [routerLink]="['/create-class']">Crear Clase</ion-button>
   </div>
 
-  <div *ngIf="mostrarQr" class="qr-container">
-    <div class="qr-background">
-      <qrcode [qrdata]="texto" [width]="150"></qrcode>
-    </div>
-  </div>
 </ion-content>
 
 <ion-footer>
