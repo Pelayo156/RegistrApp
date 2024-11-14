@@ -2,6 +2,9 @@
   <ion-content [fullscreen]="true">
     <div id="container">
       <h3>Bienvenido {{ username }}</h3>
+
+      <ion-button [routerLink]="['/create-course']">Agregar Curso</ion-button>
+
       <div class="grid">
         <ion-card *ngFor="let curso of cursos" class="course-card">
           <img [src]="curso.imagen" alt="Imagen del curso" class="course-image"/>
@@ -17,12 +20,10 @@
   <ion-footer>
     <ion-toolbar>
       <ion-buttons slot="end">
-        <!-- Botón que abre el modal -->
         <ion-button id="open-custom-dialog" expand="block">
           <ion-icon name="log-out-outline"></ion-icon>Cerrar Sesión
         </ion-button>
 
-        <!-- Modal de confirmación de cierre de sesión -->
         <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
           <ng-template>
             <div class="modal-wrapper">

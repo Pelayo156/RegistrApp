@@ -52,7 +52,9 @@ ion-card-content {
 
 ion-button {
   margin-top: -8px;
+  --background:#6200ee;
 }
+
 .modal-wrapper {
   display: flex;
   flex-direction: column;
@@ -84,4 +86,8 @@ ion-button {
 .modal-wrapper ion-button[color="light"] {
   background-color: #e0e0e0;
   color: #333;
+}
+
+ion-button #add-curso{
+  --background:#6200ee;
 }

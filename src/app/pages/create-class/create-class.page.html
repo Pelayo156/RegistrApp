@@ -1,13 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>create-class</ion-title>
+    <ion-title>Createclass</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">create-class</ion-title>
+      <ion-title size="large">Crear Clase</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <h1>Crear clase</h1>
+  <ion-item>
+    <ion-label position="stacked">Fecha de Inicio</ion-label>
+    <input type="date" [(ngModel)]="fechaInicio" />
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label position="stacked">Hora de Inicio</ion-label>
+    <input type="time" [(ngModel)]="horaInicio" />
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Hora de Término</ion-label>
+    <input type="time" [(ngModel)]="horaTermino" />
+  </ion-item>
+
+
+  <ion-button expand="full" (click)="guardarClase()">Guardar Clase</ion-button>
 </ion-content>
