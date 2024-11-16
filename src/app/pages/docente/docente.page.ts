@@ -44,4 +44,9 @@ export class DocentePage implements OnInit {
   goToCurso(curso: object) {
     this.router.navigate(['/curso-docente', curso]);
   }
+
+  // Método para dirigirse a página de crear curso
+  goToCreateCourse() {
+    this.router.navigate(['/create-course']);
+  }
 }

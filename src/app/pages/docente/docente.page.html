@@ -3,7 +3,7 @@
     <div id="container">
       <h3>Bienvenido {{ username }}</h3>
 
-      <ion-button [routerLink]="['/create-course']">Agregar Curso</ion-button>
+      <ion-button (click)="goToCreateCourse()">Agregar Curso</ion-button>
 
       <div class="grid">
         <ion-card *ngFor="let curso of cursos" class="course-card">

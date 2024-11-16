@@ -1,37 +1,43 @@
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">create-course</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <!--nombre, sigla, institucion, descripcion-->
 
-  <form>
-    <h1>A</h1>
-
-    <ion-list>
-      <ion-item>
-        <ion-input label="Nombre"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input label="Sigla" labelPlacement="fixed"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input label="Institución"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input label="Descripción"></ion-input>
-      </ion-item>
-    </ion-list>
-
-    <div class="btn">
-      <ion-button>Agregar Curso</ion-button>
+  <form class="form card" (ngSubmit)="createCourse()">
+    <div class="card_header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path fill="none" d="M0 0h24v24H0z"></path>
+        <path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4-5 4v-3H2v-2h8z"></path>
+      </svg>
+      <h1 class="form_heading">Crear curso</h1>
+    </div>
+    
+    <!-- Campo sigla -->
+    <div class="field">
+      <label for="run">Nombre</label>
+      <input class="input" type="text" [(ngModel)]="curso.nombre" name="nombre" required>
     </div>
 
+    <!-- Campo Sigla -->
+    <div class="field">
+      <label for="nombre">Sigla</label>
+      <input class="input" type="text" [(ngModel)]="curso.sigla" name="sigla" required>
+    </div>
+
+    <!-- Campo Institución -->
+    <div class="field">
+      <label for="apellido">Institución</label>
+      <input class="input" type="text" [(ngModel)]="curso.institucion" name="institucion" required>
+    </div>
+
+    <!-- Campo Descripción -->
+    <div class="field">
+      <label for="correo">Descripción</label>
+      <input class="input" type="text" [(ngModel)]="curso.descripcion" name="descripcion" required>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="field">
+      <button type="submit" color="primary">Crear</button>
+    </div>
   </form>
 
 
