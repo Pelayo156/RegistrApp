@@ -4,20 +4,6 @@
   margin-top: 10px; 
 }
 
-.qr-button {
-  --background: #b0b0b0; 
-  --border-radius: 8px;
-  --padding-start: 12px;
-  --padding-end: 12px; 
-  font-size: 1rem; 
-  font-weight: 600; 
-  color: #fff; 
-  --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); 
-  display: inline-flex; 
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s ease; 
-}
 
 .qr-button:hover {
   --background: #a0a0a0; 
@@ -96,4 +82,12 @@
 
 ion-content {
   --background: #f2f2f2; 
+}
+.qr-code {
+  width: 256px;
+  height: 256px;
+}
+.small-image {
+  height: 40px;
+  object-fit: contain;
 }

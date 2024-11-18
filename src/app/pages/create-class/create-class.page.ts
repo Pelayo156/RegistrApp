@@ -54,23 +54,18 @@ export class CreateClassPage implements OnInit {
         horaTermino: this.horaTermino,
       };
 
-      // Obtener clases guardadas por curso
       let clasesGuardadas = JSON.parse(localStorage.getItem('clasesPorCurso') || '{}');
 
-      // Verificar si ya existe un arreglo para este curso
       if (!clasesGuardadas[this.curso.nombre]) {
         clasesGuardadas[this.curso.nombre] = [];
       }
 
-      // Añadir la nueva clase
       clasesGuardadas[this.curso.nombre].push(nuevaClase);
 
-      // Guardar en localStorage
       localStorage.setItem('clasesPorCurso', JSON.stringify(clasesGuardadas));
 
       this.mostrarToast('Se ha registrado su clase correctamente');
 
-      // Navegar a la página del curso docente
       this.router.navigate(['/curso-docente'], {
         queryParams: { curso: JSON.stringify(this.curso) }
       });

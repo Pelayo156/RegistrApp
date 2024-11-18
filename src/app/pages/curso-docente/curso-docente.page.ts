@@ -10,6 +10,7 @@ import { AlertController } from '@ionic/angular';
 export class CursoDocentePage implements OnInit {
   public curso: any = {};
   public clases: any[] = [];
+  public qrData: string | null = null; // Datos del QR para mostrar
 
   constructor(
     private route: ActivatedRoute,
@@ -83,7 +84,18 @@ export class CursoDocentePage implements OnInit {
     this.cargarClases();
   }
 
-  // Método para regresar a la vista principal
+  // Método para generar código QR para una clase
+  generarQr(index: number) {
+    const clase = this.clases[index];
+    this.qrData = JSON.stringify({
+      curso: this.curso.nombre,
+      fechaInicio: clase.fechaInicio,
+      horaInicio: clase.horaInicio,
+      horaTermino: clase.horaTermino,
+    });
+  }
+
+  // Método para cerrar sesión
   toDocente() {
     this.router.navigate(['/docente']);
   }

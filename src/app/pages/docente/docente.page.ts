@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PresenteprofeService } from 'src/app/services/presenteprofe.service';
+import { AlertController } from '@ionic/angular'; // Importa AlertController
 
 @Component({
   selector: 'app-docente',
@@ -13,7 +14,12 @@ export class DocentePage implements OnInit {
   public emailUser: string = '';
   public cursos: any;
 
-  constructor(private route: ActivatedRoute, private router: Router, private presenteprofeService: PresenteprofeService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private presenteprofeService: PresenteprofeService,
+    private alertController: AlertController // Inyecta AlertController
+  ) {}
 
   ngOnInit() {
     // Obtener email de usuario autenticado
@@ -23,7 +29,7 @@ export class DocentePage implements OnInit {
       this.emailUser = JSON.parse(user).correo;
 
       // Obtener username
-      this.username = JSON.parse(user).nombre
+      this.username = JSON.parse(user).nombre;
 
       // Obtener cursos del usuario
       this.presenteprofeService.getCursos(this.emailUser).subscribe((response) => {
@@ -34,10 +40,30 @@ export class DocentePage implements OnInit {
     }
   }
 
-  // Método para cerrar sesión
-  logout() {
-    localStorage.removeItem("user");
-    this.router.navigate(['/login']);
+  // Método para cerrar sesión con alerta
+  async logout() {
+    const alert = await this.alertController.create({
+      header: 'Confirmación',
+      message: '¿Estás seguro de que deseas cerrar sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Sesión no cerrada');
+          },
+        },
+        {
+          text: 'Cerrar sesión',
+          handler: () => {
+            localStorage.removeItem("user");
+            this.router.navigate(['/login']);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   // Método para dirigirse al curso que elija el usuario

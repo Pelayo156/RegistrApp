@@ -13,8 +13,11 @@ import  { QRCodeModule } from 'angularx-qrcode';
     CommonModule,
     FormsModule,
     IonicModule,
-    CursoDocentePageRoutingModule
-  ],
+    CursoDocentePageRoutingModule,
+    QRCodeModule,
+
+  ]
+  ,
   declarations: [CursoDocentePage]
 })
 export class CursoDocentePageModule {}

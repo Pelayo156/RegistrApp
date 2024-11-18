@@ -1,16 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- Imagen en lugar de texto -->
+    <ion-title slot="start">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/2560px-Logo_DuocUC.svg.png" alt="Logo" class="small-image" />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <div class="ion-page" id="main-content">
   <ion-content [fullscreen]="true">
     <div id="container">
       <h3>Bienvenido {{ username }}</h3>
 
-      <ion-button (click)="goToCreateCourse()">Agregar Curso</ion-button>
+      <ion-button class="agregar-curso" (click)="goToCreateCourse()">Agregar Curso</ion-button>
 
       <div class="grid">
         <ion-card *ngFor="let curso of cursos" class="course-card">
           <img [src]="curso.imagen" alt="Imagen del curso" class="course-image"/>
           <ion-card-title class="course-title">{{ curso.nombre }}</ion-card-title>
           <ion-card-content>
-            <ion-button expand="block" (click)="goToCurso(curso)">Ingresar</ion-button>
+            <ion-button class="ingresar" expand="block" (click)="goToCurso(curso)">Ingresar</ion-button>
           </ion-card-content>
         </ion-card>
       </div>
@@ -20,27 +29,11 @@
   <ion-footer>
     <ion-toolbar>
       <ion-buttons slot="end">
-        <ion-button id="open-custom-dialog" expand="block">
+        <ion-button id="open-custom-dialog" expand="block" (click)="logout()">
           <ion-icon name="log-out-outline"></ion-icon>Cerrar Sesión
         </ion-button>
-
-        <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
-          <ng-template>
-            <div class="modal-wrapper">
-              <h2>¿Deseas cerrar sesión?</h2>
-              <ion-list lines="none">
-                <ion-item button="true" detail="false" (click)="logout(); modal.dismiss()">
-                  <ion-button expand="block" color="danger">Sí</ion-button>
-                </ion-item>
-                <ion-item button="true" detail="false" (click)="modal.dismiss()">
-                  <ion-button expand="block" color="light">No</ion-button>
-                </ion-item>
-              </ion-list>
-            </div>
-          </ng-template>
-        </ion-modal>
-
       </ion-buttons>
     </ion-toolbar>
   </ion-footer>
-</div>
+  
+      

@@ -1,11 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="toDocente()" fill="clear">
-        <ion-icon name="arrow-back-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>{{ curso.nombre }}</ion-title>
+    <!-- Imagen en lugar de texto -->
+    <ion-title slot="start">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/2560px-Logo_DuocUC.svg.png"
+        alt="Logo"
+        class="small-image"
+      />
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -27,11 +29,15 @@
               <p *ngIf="clase.suspendida" style="color: red;">Suspendida</p>
             </ion-label>
             <ion-buttons slot="end">
-              <!-- Botón para suspender -->
+            
+              <ion-button color="primary" (click)="generarQr(i)">
+                <ion-icon slot="icon-only" name="qr-code"></ion-icon>
+              </ion-button>
+             
               <ion-button color="warning" (click)="suspenderClase(i)">
                 <ion-icon slot="icon-only" name="pause-circle"></ion-icon>
               </ion-button>
-              <!-- Botón para eliminar -->
+             
               <ion-button color="danger" (click)="eliminarClase(i)">
                 <ion-icon slot="icon-only" name="trash"></ion-icon>
               </ion-button>
@@ -52,5 +58,24 @@
         <ion-button [routerLink]="['/create-class']">Crear Clase</ion-button>
       </ion-col>
     </ion-row>
+
+    <ion-row *ngIf="qrData">
+      <ion-col class="qr-container">
+        <div class="qr-background">
+          <qrcode [qrdata]="qrData" class="qr-code"></qrcode>
+        </div>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="toDocente()" expand="block">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Volver
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
