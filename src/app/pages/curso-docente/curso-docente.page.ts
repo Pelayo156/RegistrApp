@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-curso-docente',
@@ -7,39 +8,83 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./curso-docente.page.scss'],
 })
 export class CursoDocentePage implements OnInit {
-  public curso: any = {}; 
-  public texto: string = '';
-  public mostrarQr: boolean = false;
+  public curso: any = {};
+  public clases: any[] = [];
 
-  // Información del profesor
-  public profesor = {
-    nombre: 'Benjamin Elias Mora Torres',
-    correo: 'bej.mora@profesor.duoc.cl',
-    seccion: 'Sección 010D',
-  };
-
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private alertController: AlertController
+  ) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.curso = params;
-      console.log(this.curso);
-      this.texto = this.curso.id;
+    // Obtener parámetros del curso
+    this.route.queryParams.subscribe((params) => {
+      this.curso = JSON.parse(params['curso'] || '{}');
+      this.cargarClases();
     });
   }
 
-  // Método para cerrar sesión
-  logout() {
-    localStorage.removeItem("user");
-    this.router.navigate(['/login']);
+  // Método para cargar las clases asociadas al curso
+  cargarClases() {
+    const clasesGuardadas = JSON.parse(localStorage.getItem('clasesPorCurso') || '{}');
+    this.clases = clasesGuardadas[this.curso.nombre] || [];
   }
 
-  generarQr() {
-    this.mostrarQr = true;
+  // Método para eliminar una clase
+  async eliminarClase(index: number) {
+    const alert = await this.alertController.create({
+      header: 'Confirmar eliminación',
+      message: '¿Estás seguro de que deseas eliminar esta clase?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Eliminar',
+          handler: () => {
+            this.clases.splice(index, 1); // Eliminar clase del arreglo local
+            this.guardarClases(); // Guardar cambios en localStorage
+          },
+        },
+      ],
+    });
+    await alert.present();
   }
 
+  // Método para suspender una clase
+  async suspenderClase(index: number) {
+    const alert = await this.alertController.create({
+      header: 'Confirmar suspensión',
+      message: '¿Estás seguro de que deseas suspender esta clase?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Suspender',
+          handler: () => {
+            this.clases[index].suspendida = true; // Marcar clase como suspendida
+            this.guardarClases(); // Guardar cambios en localStorage
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
+  // Método para guardar las clases actualizadas en localStorage
+  guardarClases() {
+    const clasesGuardadas = JSON.parse(localStorage.getItem('clasesPorCurso') || '{}');
+    clasesGuardadas[this.curso.nombre] = this.clases;
+    localStorage.setItem('clasesPorCurso', JSON.stringify(clasesGuardadas));
+    this.cargarClases();
+  }
+
+  // Método para regresar a la vista principal
   toDocente() {
-    this.mostrarQr = false;
     this.router.navigate(['/docente']);
   }
 }
