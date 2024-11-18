@@ -20,7 +20,7 @@ export class CreateClassPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Inicializar el curso (puedes cargarlo de parámetros o localStorage si aplica)
+  
     const cursoGuardado = localStorage.getItem('cursoSeleccionado');
     if (cursoGuardado) {
       this.curso = JSON.parse(cursoGuardado);
@@ -47,28 +47,39 @@ export class CreateClassPage implements OnInit {
   }
 
   async guardarClase() {
+ 
+    const fechaHoy = new Date();
+    const fechaInicioDate = new Date(this.fechaInicio);
+
+    fechaHoy.setHours(0, 0, 0, 0);
+    fechaInicioDate.setHours(0, 0, 0, 0);
+
     if (this.fechaInicio && this.horaInicio && this.horaTermino) {
-      const nuevaClase = {
-        fechaInicio: this.fechaInicio,
-        horaInicio: this.horaInicio,
-        horaTermino: this.horaTermino,
-      };
+      if (fechaInicioDate < fechaHoy) {
+        this.mostrarAlerta('La fecha ingresada no es valida.');
+      } else {
+        const nuevaClase = {
+          fechaInicio: this.fechaInicio,
+          horaInicio: this.horaInicio,
+          horaTermino: this.horaTermino,
+        };
 
-      let clasesGuardadas = JSON.parse(localStorage.getItem('clasesPorCurso') || '{}');
+        let clasesGuardadas = JSON.parse(localStorage.getItem('clasesPorCurso') || '{}');
 
-      if (!clasesGuardadas[this.curso.nombre]) {
-        clasesGuardadas[this.curso.nombre] = [];
+        if (!clasesGuardadas[this.curso.nombre]) {
+          clasesGuardadas[this.curso.nombre] = [];
+        }
+
+        clasesGuardadas[this.curso.nombre].push(nuevaClase);
+
+        localStorage.setItem('clasesPorCurso', JSON.stringify(clasesGuardadas));
+
+        this.mostrarToast('Se ha registrado su clase correctamente');
+
+        this.router.navigate(['/curso-docente'], {
+          queryParams: { curso: JSON.stringify(this.curso) }
+        });
       }
-
-      clasesGuardadas[this.curso.nombre].push(nuevaClase);
-
-      localStorage.setItem('clasesPorCurso', JSON.stringify(clasesGuardadas));
-
-      this.mostrarToast('Se ha registrado su clase correctamente');
-
-      this.router.navigate(['/curso-docente'], {
-        queryParams: { curso: JSON.stringify(this.curso) }
-      });
     } else {
       let mensaje = 'Por favor, completa los siguientes campos:';
       if (!this.fechaInicio) mensaje += ' Fecha de Inicio.';
