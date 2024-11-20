@@ -67,8 +67,8 @@ export class DocentePage implements OnInit {
   }
 
   // Método para dirigirse al curso que elija el usuario
-  goToCurso(curso: object) {
-    this.router.navigate(['/curso-docente', curso]);
+  goToCurso(id_curso: any) {
+    this.router.navigate(['/curso-docente', id_curso]);
   }
 
   // Método para dirigirse a página de crear curso

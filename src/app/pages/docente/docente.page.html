@@ -19,7 +19,7 @@
           <img [src]="curso.imagen" alt="Imagen del curso" class="course-image"/>
           <ion-card-title class="course-title">{{ curso.nombre }}</ion-card-title>
           <ion-card-content>
-            <ion-button class="ingresar" expand="block" (click)="goToCurso(curso)">Ingresar</ion-button>
+            <ion-button class="ingresar" expand="block" (click)="goToCurso(curso.id)">Ingresar</ion-button>
           </ion-card-content>
         </ion-card>
       </div>

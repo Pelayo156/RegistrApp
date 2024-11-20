@@ -10,6 +10,11 @@ import { PresenteprofeService } from 'src/app/services/presenteprofe.service';
   styleUrls: ['./create-class.page.scss'],
 })
 export class CreateClassPage implements OnInit {
+  // Datos para registrar curso
+  token: string = '';
+  id_curso: string = '';
+
+  // Datos para crear la clase
   fecha_inicio: string = '';
   hora_inicio: string = '';
   hora_termino: string = '';

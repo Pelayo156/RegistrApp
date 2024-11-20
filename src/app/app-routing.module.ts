@@ -24,7 +24,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'curso-docente',
+    path: 'curso-docente/:id_curso',
     loadChildren: () => import('./pages/curso-docente/curso-docente.module').then( m => m.CursoDocentePageModule)
   },
   {
@@ -36,7 +36,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/create-course/create-course.module').then( m => m.CreateCoursePageModule)
   },
   {
-    path: 'create-class',
+    path: 'create-class/:id_curso',
     loadChildren: () => import('./pages/create-class/create-class.module').then( m => m.CreateClassPageModule)
   },
 ];

@@ -20,68 +20,8 @@ export class CursoDocentePage implements OnInit {
 
   ngOnInit() {
     // Obtener parámetros del curso
-    this.route.queryParams.subscribe((params) => {
-      this.curso = JSON.parse(params['curso'] || '{}');
-      this.cargarClases();
-    });
-  }
-
-  // Método para cargar las clases asociadas al curso
-  cargarClases() {
-    const clasesGuardadas = JSON.parse(localStorage.getItem('clasesPorCurso') || '{}');
-    this.clases = clasesGuardadas[this.curso.nombre] || [];
-  }
-
-  // Método para eliminar una clase
-  async eliminarClase(index: number) {
-    const alert = await this.alertController.create({
-      header: 'Confirmar eliminación',
-      message: '¿Estás seguro de que deseas eliminar esta clase?',
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-        },
-        {
-          text: 'Eliminar',
-          handler: () => {
-            this.clases.splice(index, 1); // Eliminar clase del arreglo local
-            this.guardarClases(); // Guardar cambios en localStorage
-          },
-        },
-      ],
-    });
-    await alert.present();
-  }
-
-  // Método para suspender una clase
-  async suspenderClase(index: number) {
-    const alert = await this.alertController.create({
-      header: 'Confirmar suspensión',
-      message: '¿Estás seguro de que deseas suspender esta clase?',
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-        },
-        {
-          text: 'Suspender',
-          handler: () => {
-            this.clases[index].suspendida = true; // Marcar clase como suspendida
-            this.guardarClases(); // Guardar cambios en localStorage
-          },
-        },
-      ],
-    });
-    await alert.present();
-  }
-
-  // Método para guardar las clases actualizadas en localStorage
-  guardarClases() {
-    const clasesGuardadas = JSON.parse(localStorage.getItem('clasesPorCurso') || '{}');
-    clasesGuardadas[this.curso.nombre] = this.clases;
-    localStorage.setItem('clasesPorCurso', JSON.stringify(clasesGuardadas));
-    this.cargarClases();
+    this.curso = this.route.snapshot.paramMap.get('id_curso');
+    console.log(this.curso);
   }
 
   // Método para generar código QR para una clase
@@ -95,8 +35,12 @@ export class CursoDocentePage implements OnInit {
     });
   }
 
-  // Método para cerrar sesión
   toDocente() {
     this.router.navigate(['/docente']);
+  }
+
+  // Método para ir a la vista de crear clase
+  toCreateClass() {
+    this.router.navigate(['/create-class'])
   }
 }
