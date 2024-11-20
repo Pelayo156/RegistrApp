@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, importProvidersFrom, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint, CapacitorBarcodeScannerTypeHintALLOption } from '@capacitor/barcode-scanner';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,7 @@ export class HomePage implements OnInit {
   }
 
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private alertController: AlertController) { }
 
   ngOnInit() {
     // Obtener email de usuario autenticado
@@ -34,8 +35,28 @@ export class HomePage implements OnInit {
     }
   }
 
-  logout() {
-    localStorage.removeItem("user");
-    this.router.navigate(['/login']);
+  async logout() {
+    const alert = await this.alertController.create({
+      header: 'Confirmación',
+      message: '¿Estás seguro de que deseas cerrar sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Sesión no cerrada');
+          },
+        },
+        {
+          text: 'Cerrar sesión',
+          handler: () => {
+            localStorage.removeItem("user");
+            this.router.navigate(['/login']);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 }
