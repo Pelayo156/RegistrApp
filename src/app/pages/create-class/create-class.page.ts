@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Clase } from 'src/app/models/clase';
+import { PresenteprofeService } from 'src/app/services/presenteprofe.service';
 
 @Component({
   selector: 'app-create-class',
@@ -8,23 +10,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-class.page.scss'],
 })
 export class CreateClassPage implements OnInit {
-  fechaInicio: string = '';
-  horaInicio: string = '';
-  horaTermino: string = '';
-  curso: any = {}; 
+  fecha_inicio: string = '';
+  hora_inicio: string = '';
+  hora_termino: string = '';
 
   constructor(
     private alertController: AlertController,
     private toastController: ToastController,
-    private router: Router
+    private router: Router,
+    private presenteProfeService: PresenteprofeService
   ) {}
 
   ngOnInit() {
-  
-    const cursoGuardado = localStorage.getItem('cursoSeleccionado');
-    if (cursoGuardado) {
-      this.curso = JSON.parse(cursoGuardado);
-    }
+    
   }
 
   async mostrarAlerta(mensaje: string) {
@@ -49,42 +47,32 @@ export class CreateClassPage implements OnInit {
   async guardarClase() {
  
     const fechaHoy = new Date();
-    const fechaInicioDate = new Date(this.fechaInicio);
+    const fechaInicioDate = new Date(this.fecha_inicio);
 
     fechaHoy.setHours(0, 0, 0, 0);
     fechaInicioDate.setHours(0, 0, 0, 0);
 
-    if (this.fechaInicio && this.horaInicio && this.horaTermino) {
+    if (this.fecha_inicio && this.hora_inicio && this.hora_termino) {
       if (fechaInicioDate < fechaHoy) {
         this.mostrarAlerta('La fecha ingresada no es valida.');
       } else {
-        const nuevaClase = {
-          fechaInicio: this.fechaInicio,
-          horaInicio: this.horaInicio,
-          horaTermino: this.horaTermino,
+        const nuevaClase: Clase = {
+          fecha_inicio: this.fecha_inicio,
+          hora_inicio: this.hora_inicio,
+          hora_termino: this.hora_termino,
         };
 
-        let clasesGuardadas = JSON.parse(localStorage.getItem('clasesPorCurso') || '{}');
-
-        if (!clasesGuardadas[this.curso.nombre]) {
-          clasesGuardadas[this.curso.nombre] = [];
-        }
-
-        clasesGuardadas[this.curso.nombre].push(nuevaClase);
-
-        localStorage.setItem('clasesPorCurso', JSON.stringify(clasesGuardadas));
+        // Lógica de registro de clase
 
         this.mostrarToast('Se ha registrado su clase correctamente');
 
-        this.router.navigate(['/curso-docente'], {
-          queryParams: { curso: JSON.stringify(this.curso) }
-        });
+        this.router.navigate(['/curso-docente']);
       }
     } else {
       let mensaje = 'Por favor, completa los siguientes campos:';
-      if (!this.fechaInicio) mensaje += ' Fecha de Inicio.';
-      if (!this.horaInicio) mensaje += ' Hora de Inicio.';
-      if (!this.horaTermino) mensaje += ' Hora de Término.';
+      if (!this.fecha_inicio) mensaje += ' Fecha de Inicio.';
+      if (!this.hora_inicio) mensaje += ' Hora de Inicio.';
+      if (!this.hora_termino) mensaje += ' Hora de Término.';
       this.mostrarAlerta(mensaje);
     }
   }

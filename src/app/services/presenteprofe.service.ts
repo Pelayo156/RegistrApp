@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 import { Curso } from '../models/curso';
+import { Clase } from '../models/clase';
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +49,15 @@ export class PresenteprofeService {
     });
 
     return this.http.post(`${this.url}/cursos`, JSON.stringify(curso), { headers });
+  }
+
+  // Función para registrar una clase
+  createClass(clase: Clase, token: string, id_curso: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    return this.http.post(`${this.url}/cursos/${id_curso}/clase`, JSON.stringify(clase), { headers });
   }
 }
