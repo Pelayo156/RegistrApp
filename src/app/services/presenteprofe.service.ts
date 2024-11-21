@@ -80,4 +80,14 @@ export class PresenteprofeService {
 
     return this.http.get(`${this.url}/cursos/${id}/clase`, { headers });
   }
+
+  // Función para registrar asistencia del alumno
+  registerAttendance(code: string, token: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    return this.http.post(`${this.url}`, { headers });
+  }
 }
