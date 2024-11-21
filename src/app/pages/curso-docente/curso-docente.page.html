@@ -19,15 +19,30 @@
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row *ngIf="clases.length == 0">
       <ion-col>
         <p>No hay clases registradas.</p>
       </ion-col>
     </ion-row>
 
+    <table *ngIf="clases.length > 0">
+      <tr>
+        <th>#</th>
+        <th>Fecha</th>
+        <th>Hora inicio</th>
+        <th>Hora término</th>
+      </tr>
+      <tr *ngFor="let clase of clases">
+        <td>{{ clase.codigo_web }}</td>
+        <td>{{ clase.fecha }}</td>
+        <td>{{ clase.hora_inicio }}</td>
+        <td>{{ clase.hora_termino }}</td>
+      </tr>
+    </table>
+
     <ion-row>
       <ion-col>
-        <ion-button [routerLink]="['/create-class']">Crear Clase</ion-button>
+        <ion-button (click)="toCreateClass(id_curso)">Crear Clase</ion-button>
       </ion-col>
     </ion-row>
 

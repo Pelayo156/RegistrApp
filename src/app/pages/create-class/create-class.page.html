@@ -23,8 +23,7 @@
       <ion-col size="12" size-md="6" offset-md="3">
         <ion-item class="input-item">
           <ion-label position="stacked">Fecha de Inicio</ion-label>
-          <ion-datetime [(ngModel)]="fecha_inicio" displayFormat="DD/MM/YYYY" class="custom-datetime"></ion-datetime>
-
+          <ion-datetime presentation="date" [(ngModel)]="fecha" displayFormat="DD/MM/YYYY" class="custom-datetime"></ion-datetime>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -48,7 +47,7 @@
           <ion-label position="stacked" for="horaTermino">Hora de Término</ion-label>
           <input 
             type="time" 
-            [(ngModel)]="hora_termino" 
+            [(ngModel)]="hora_termino"
             id="horaTermino" 
             class="custom-input" 
             placeholder="Selecciona la hora de término"
@@ -68,7 +67,7 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button fill="clear" routerLink="/docente" color="medium">
+      <ion-button fill="clear" (click)="toCursoDocente(id_curso)" color="medium">
         <ion-icon name="log-out-outline"></ion-icon>
         Volver
       </ion-button>

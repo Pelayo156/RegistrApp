@@ -1,5 +1,5 @@
 export interface Clase {
-    fecha_inicio: string,
+    fecha: string,
     hora_inicio: string,
     hora_termino: string
 }

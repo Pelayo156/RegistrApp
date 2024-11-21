@@ -52,12 +52,32 @@ export class PresenteprofeService {
   }
 
   // Función para registrar una clase
-  createClass(clase: Clase, token: string, id_curso: number) {
+  createClass(clase: Clase, token: string, id: number) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
     });
 
-    return this.http.post(`${this.url}/cursos/${id_curso}/clase`, JSON.stringify(clase), { headers });
+    return this.http.post(`${this.url}/cursos/${id}/clase`, JSON.stringify(clase), { headers });
+  }
+
+  // Función para traer información de un curso en específico
+  getCourse(id: number, token: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    return this.http.get(`${this.url}/cursos/${id}`, { headers });
+  }
+
+  // Función para obtener las clases de un respectivo curso
+  getClasses(id: number, token: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    return this.http.get(`${this.url}/cursos/${id}/clase`, { headers });
   }
 }
