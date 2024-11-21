@@ -45,14 +45,6 @@
         <ion-button (click)="toCreateClass(id_curso)">Crear Clase</ion-button>
       </ion-col>
     </ion-row>
-
-    <ion-row *ngIf="qrData">
-      <ion-col class="qr-container">
-        <div class="qr-background">
-          <qrcode [qrdata]="qrData" class="qr-code"></qrcode>
-        </div>
-      </ion-col>
-    </ion-row>
   </ion-grid>
 </ion-content>
 

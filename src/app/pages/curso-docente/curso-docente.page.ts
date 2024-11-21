@@ -14,7 +14,6 @@ export class CursoDocentePage implements OnInit {
 
   public curso: any = {};
   public clases: any[] = [];
-  public qrData: string | null = null; // Datos del QR para mostrar
 
   constructor(
     private route: ActivatedRoute,
@@ -42,18 +41,6 @@ export class CursoDocentePage implements OnInit {
       console.log(this.clases);
     });
   }
-
-  /* Método para generar código QR para una clase
-  generarQr(index: number) {
-    const clase = this.clases[index];
-    this.qrData = JSON.stringify({
-      curso: this.curso.nombre,
-      fechaInicio: clase.fechaInicio,
-      horaInicio: clase.horaInicio,
-      horaTermino: clase.horaTermino,
-    });
-  }
-  */
 
   toDocente() {
     this.router.navigate(['/docente']);
