@@ -1,57 +1,67 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <!-- Imagen en lugar de texto -->
+  <ion-toolbar class="custom-toolbar">
     <ion-title slot="start">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/2560px-Logo_DuocUC.svg.png"
         alt="Logo"
-        class="small-image"
+        class="logo-header"
       />
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="content-container">
   <ion-grid>
-    <ion-row>
+    <ion-row class="title-row">
       <ion-col size="12">
-        <h2>Clases Registradas</h2>
+        <h2 class="page-title">Clases Registradas</h2>
+      </ion-col>
+    </ion-row>
+
+    <!-- Botón "Crear Clase" debajo del título -->
+    <ion-row>
+      <ion-col size="12" class="button-col">
+        <ion-button class="create-button" (click)="toCreateClass(id_curso)">
+          Crear Clase
+        </ion-button>
       </ion-col>
     </ion-row>
 
     <ion-row *ngIf="clases.length == 0">
       <ion-col>
-        <p>No hay clases registradas.</p>
+        <p class="no-classes-text">No hay clases registradas.</p>
       </ion-col>
     </ion-row>
 
-    <table *ngIf="clases.length > 0">
-      <tr>
-        <th>#</th>
-        <th>Fecha</th>
-        <th>Hora inicio</th>
-        <th>Hora término</th>
-      </tr>
-      <tr *ngFor="let clase of clases">
-        <td>{{ clase.codigo_web }}</td>
-        <td>{{ clase.fecha }}</td>
-        <td>{{ clase.hora_inicio }}</td>
-        <td>{{ clase.hora_termino }}</td>
-      </tr>
-    </table>
-
-    <ion-row>
-      <ion-col>
-        <ion-button (click)="toCreateClass(id_curso)">Crear Clase</ion-button>
+    <ion-row *ngIf="clases.length > 0">
+      <ion-col size="12" *ngFor="let clase of clases">
+        <ion-card class="class-card">
+          <ion-card-header>
+            <ion-card-title>{{ clase.codigo_web }} - {{ clase.fecha }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="class-details">
+              <div class="detail-item">
+                <ion-label class="detail-label">Hora Inicio:</ion-label>
+                <span>{{ clase.hora_inicio }}</span>
+              </div>
+              <div class="detail-item">
+                <ion-label class="detail-label">Hora Término:</ion-label>
+                <span>{{ clase.hora_termino }}</span>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
+
   </ion-grid>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar class="custom-footer">
     <ion-buttons slot="end">
-      <ion-button (click)="toDocente()" expand="block">
+      <ion-button (click)="toDocente()" expand="block" class="back-button">
         <ion-icon name="arrow-back-outline"></ion-icon>
         Volver
       </ion-button>

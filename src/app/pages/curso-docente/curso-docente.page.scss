@@ -1,93 +1,110 @@
-.button-container {
-  display: flex;
-  justify-content: center; 
-  margin-top: 10px; 
+/* Estilo para el header */
+.custom-toolbar {
+  --background: rgba(0, 0, 0, 0.1); /* Fondo translúcido */
+  --border-width: 0px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }
 
-
-.qr-button:hover {
-  --background: #a0a0a0; 
+.logo-header {
+  width: 120px;
+  height: auto;
 }
 
-.qr-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Estilo para el contenido */
+.content-container {
+  --background: #f7f7f7; /* Fondo suave y claro */
+  padding: 20px;
+  margin-top: 80px; /* Asegurarse de que el contenido no se superponga al toolbar */
+}
+
+.page-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
   margin-top: 20px;
 }
 
-.qr-background {
-  padding: 20px; 
-  background-color: #f9f9f9; 
-  border-radius: 12px; 
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.custom-toolbar {
-  --min-height: 130px; 
-  font-size: 1.2em;
-}
-.small-title {
-  font-size: 0.9rem;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between; 
-  align-items: center; 
-  margin-left: 1px; 
-           
-}
-
-.subtitle {
-  font-size: 0.8rem;
-  font-weight: normal;
-  color: gray;
-  margin-left: 40px; 
-}
-.profesor-card {
-  max-width: 350px;
-  margin: 20px auto;
+.no-classes-text {
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 50px;
 }
 
-.profesor-card-title {
-  font-size: 20px;
+/* Estilo para las tarjetas de clase */
+.class-card {
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.class-card ion-card-header {
+  background-color: #e6e6e6;
   color: #333;
-  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 10px;
 }
 
-.profesor-info {
+.class-card ion-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Detalles de la clase */
+.class-details {
+  margin-top: 10px;
+}
+
+.detail-item {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
 }
 
-.profesor-item {
-  margin-bottom: 10px;
-}
-
-.profesor-item label {
+.detail-label {
   font-weight: bold;
   color: #555;
 }
 
-.profesor-item p {
-  margin: 0;
+.detail-item span {
   color: #333;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
-ion-content {
-  --background: #f2f2f2; 
+/* Estilo para los botones */
+.create-button {
+  --background: #007bff;
+  --color: white;
+  border-radius: 30px;
+  font-size: 1rem;
 }
-.qr-code {
-  width: 256px;
-  height: 256px;
+
+.create-button:hover {
+  --background: #0056b3;
 }
-.small-image {
-  height: 40px;
-  object-fit: contain;
+
+.button-col {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.custom-footer {
+  --background: #f7f7f7;
+}
+
+.back-button {
+  --background: #d32f2f;
+  --color: white;
+  border-radius: 30px;
+}
+
+.back-button:hover {
+  --background: #c5c5c5;
 }
