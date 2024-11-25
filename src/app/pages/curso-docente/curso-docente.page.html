@@ -14,7 +14,7 @@
   <ion-grid>
     <ion-row class="title-row">
       <ion-col size="12">
-        <h2 class="page-title">Clases Registradas</h2>
+        <h2 class="page-title">Clases Registradas {{ curso.nombre }}</h2>
       </ion-col>
     </ion-row>
 
@@ -37,10 +37,14 @@
       <ion-col size="12" *ngFor="let clase of clases">
         <ion-card class="class-card">
           <ion-card-header>
-            <ion-card-title>{{ clase.codigo_web }} - {{ clase.fecha }}</ion-card-title>
+            <ion-card-title>Fecha {{ clase.fecha }}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <div class="class-details">
+              <div class="detail-item">
+                <ion-label class="detail-label">Código web</ion-label>
+                <span>{{ clase.codigo_web }}</span>
+              </div>
               <div class="detail-item">
                 <ion-label class="detail-label">Hora Inicio:</ion-label>
                 <span>{{ clase.hora_inicio }}</span>
@@ -48,6 +52,9 @@
               <div class="detail-item">
                 <ion-label class="detail-label">Hora Término:</ion-label>
                 <span>{{ clase.hora_termino }}</span>
+              </div>
+              <div class="detail-item" style="text-align:center;">
+                <qrcode [qrdata]="clase.codigo_web"></qrcode>
               </div>
             </div>
           </ion-card-content>

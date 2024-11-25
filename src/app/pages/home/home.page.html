@@ -5,10 +5,23 @@
     <h3>Bienvenido {{ username }}</h3>
 
     <img *ngIf="result"/>
-    {{result}}
-
     <ion-button (click)="scan()"><ion-icon name="scan"></ion-icon>Escanear QR</ion-button>
 
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Cursos Matriculados</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list *ngFor="let curso of cursos">
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img alt="Imagen curso" [src]="curso.imagen" />
+            </ion-thumbnail>
+            <ion-label><strong>Curso:</strong> {{ curso.nombre }}<br><strong>Profesor:</strong> {{ curso.usuario.nombre_completo }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
   </ion-content>
 
 

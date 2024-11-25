@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint, CapacitorBarcodeScannerTypeHintALLOption } from '@capacitor/barcode-scanner';
 import { AlertController } from '@ionic/angular';
+import { PresenteprofeService } from 'src/app/services/presenteprofe.service';
 
 @Component({
   selector: 'app-home',
@@ -12,17 +13,29 @@ import { AlertController } from '@ionic/angular';
 export class HomePage implements OnInit {
   public username: string = '';
   public emailUser: string = '';
-  result: string = ''
+
+  // Resultado del código QR escaneado
+  public result: string = ''
+
+  // Token del usuario autenticado
+  public token: string = '';
+
+  // Cursos matriculados del estudiante
+  public cursos: any = [];
+
+  constructor(private route: ActivatedRoute, private router: Router, private alertController: AlertController, private presenteProfeService: PresenteprofeService) { }
 
   async scan(): Promise<void> {
     const result = await CapacitorBarcodeScanner.scanBarcode({
       hint: CapacitorBarcodeScannerTypeHint.ALL
     });
     this.result = result.ScanResult;
+
+    // Lógica para registrar curso escaneando código QR
+    this.presenteProfeService.registerAttendance(this.result, this.token).subscribe((reponse: any) => {
+      alert(reponse.message);
+    });
   }
-
-
-  constructor(private route: ActivatedRoute, private router: Router, private alertController: AlertController) { }
 
   ngOnInit() {
     // Obtener email de usuario autenticado
@@ -31,7 +44,15 @@ export class HomePage implements OnInit {
       this.emailUser = JSON.parse(user).correo;
 
       // Obtener username
-      this.username = JSON.parse(user).nombre
+      this.username = JSON.parse(user).nombre;
+
+      // Obtener token del usuario
+      this.token = JSON.parse(user).token;
+
+      // Obtener cursos matriculados del estudiante
+      this.presenteProfeService.getStudentCourses(this.token).subscribe((response: any) => {
+        this.cursos = response.cursos;
+      });
     }
   }
 
