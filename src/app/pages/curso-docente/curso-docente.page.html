@@ -53,7 +53,18 @@
                 <ion-label class="detail-label">Hora Término:</ion-label>
                 <span>{{ clase.hora_termino }}</span>
               </div>
-              <div class="detail-item" style="text-align:center;">
+
+              <!-- Botón para generar QR -->
+              <ion-row class="generate-qr-row" style="text-align: center;">
+                <ion-col size="12">
+                  <ion-button (click)="generateQRCode(clase.codigo_web)">
+                    Generar QR
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+
+              <!-- Código QR generado -->
+              <div class="class-details" *ngIf="clase.showQRCode">
                 <qrcode [qrdata]="clase.codigo_web"></qrcode>
               </div>
             </div>

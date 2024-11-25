@@ -38,6 +38,9 @@ export class CursoDocentePage implements OnInit {
     // Obtener clases del curso seleccionado
     this.presenteProfeService.getClasses(this.id_curso, this.token).subscribe((response: any) => {
       this.clases = response.clases;
+      this.clases.forEach(clase => {
+        clase.showQRCode = false;
+      });
       console.log(this.clases);
     });
   }
@@ -49,5 +52,12 @@ export class CursoDocentePage implements OnInit {
   // Método para ir a la vista de crear clase
   toCreateClass(id_curso: string) {
     this.router.navigate(['/create-class', id_curso]);
+  }
+
+  generateQRCode(codigo_web: string) {
+    const clase = this.clases.find(c => c.codigo_web === codigo_web);
+    if (clase) {
+      clase.showQRCode = !clase.showQRCode;
+    }
   }
 }
