@@ -100,4 +100,13 @@ export class PresenteprofeService {
 
     return this.http.get(`${this.url}/estudiante/cursos`, { headers });
   }
+
+  // Función para recuperar contraseña
+  recoverPassword(email: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post(`${this.url}/auth/recuperar`, JSON.stringify(email), { headers });
+  }
 }

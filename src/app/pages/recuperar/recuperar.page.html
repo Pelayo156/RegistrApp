@@ -10,7 +10,7 @@
         <ion-input [(ngModel)]="email" label="Email" labelPlacement="stacked" placeholder="Ingresa tu email"></ion-input>
       </ion-item>
 
-      <ion-button id="present-alert" class="enviar-btn" [disabled]="!emailValido()">Enviar</ion-button>
+      <ion-button id="present-alert" class="enviar-btn" [disabled]="!emailValido()" (click)="sendEmail()">Enviar</ion-button>
         <ion-alert
           trigger ="present-alert"
           header ="Enlace enviado"
