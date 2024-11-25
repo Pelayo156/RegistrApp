@@ -17,13 +17,14 @@
   </ion-header>
 
   <ion-grid>
-   
-    
+
+
     <ion-row>
       <ion-col size="12" size-md="6" offset-md="3">
         <ion-item class="input-item">
           <ion-label position="stacked">Fecha de Inicio</ion-label>
-          <ion-datetime presentation="date" [(ngModel)]="fecha" displayFormat="DD/MM/YYYY" class="custom-datetime"></ion-datetime>
+          <ion-datetime presentation="date" [(ngModel)]="fecha" displayFormat="DD/MM/YYYY"
+            class="custom-datetime"></ion-datetime>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -32,33 +33,23 @@
       <ion-col size="12" size-md="5" offset-md="1">
         <ion-item class="input-item">
           <ion-label position="stacked" for="horaInicio">Hora de Inicio</ion-label>
-          <input 
-            type="time" 
-            [(ngModel)]="hora_inicio" 
-            id="horaInicio" 
-            class="custom-input" 
-            placeholder="Selecciona la hora de inicio"
-          />
+          <input type="time" [(ngModel)]="hora_inicio" id="horaInicio" class="custom-input"
+            placeholder="Selecciona la hora de inicio" />
         </ion-item>
       </ion-col>
-    
+
       <ion-col size="12" size-md="5">
         <ion-item class="input-item">
           <ion-label position="stacked" for="horaTermino">Hora de Término</ion-label>
-          <input 
-            type="time" 
-            [(ngModel)]="hora_termino"
-            id="horaTermino" 
-            class="custom-input" 
-            placeholder="Selecciona la hora de término"
-          />
+          <input type="time" [(ngModel)]="hora_termino" id="horaTermino" class="custom-input"
+            placeholder="Selecciona la hora de término" />
         </ion-item>
       </ion-col>
     </ion-row>
-    
+
     <ion-row class="ion-margin-top">
       <ion-col size="12" size-md="6" offset-md="3">
-        <ion-button expand= "block"class="save-button" (click)="guardarClase()">Guardar Clase</ion-button>
+        <ion-button expand="block" class="save-button" (click)="guardarClase()">Guardar Clase</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -68,7 +59,7 @@
   <ion-toolbar>
     <ion-buttons slot="end">
       <ion-button fill="clear" (click)="toCursoDocente(id_curso)" color="medium">
-        <ion-icon name="log-out-outline"></ion-icon>
+        <ion-icon name="arrow-back-outline"></ion-icon>
         Volver
       </ion-button>
     </ion-buttons>
