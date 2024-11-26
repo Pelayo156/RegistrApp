@@ -1,6 +1,5 @@
-/* Estilo para el header */
 .custom-toolbar {
-  --background: rgba(0, 0, 0, 0.1); /* Fondo translúcido */
+
   --border-width: 0px;
   position: fixed;
   top: 0;
@@ -13,11 +12,9 @@
   height: auto;
 }
 
-/* Estilo para el contenido */
 .content-container {
-  --background: #f7f7f7; /* Fondo suave y claro */
   padding: 20px;
-  margin-top: 80px; /* Asegurarse de que el contenido no se superponga al toolbar */
+  margin-top: 80px;
 }
 
 .page-title {
@@ -37,8 +34,8 @@
 
 /* Estilo para las tarjetas de clase */
 .class-card {
-  border-radius: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   background-color: white;
   margin-bottom: 15px;
   padding: 10px;
@@ -78,16 +75,22 @@
   font-size: 1rem;
 }
 
-/* Estilo para los botones */
 .create-button {
-  --background: #007bff;
+  --background: #6200ee;
   --color: white;
-  border-radius: 30px;
+  --border-radius: 50px;
   font-size: 1rem;
+  width: 100%;
+}
+
+.generate-qr-row ion-button {
+  margin-top: 10px;
+  --background: #6200ee;
+  --border-radius: 50px;
 }
 
 .create-button:hover {
-  --background: #0056b3;
+  --background: #9b55ff;
 }
 
 .button-col {
@@ -99,12 +102,4 @@
   --background: #f7f7f7;
 }
 
-.back-button {
-  --background: #d32f2f;
-  --color: white;
-  border-radius: 30px;
-}
 
-.back-button:hover {
-  --background: #c5c5c5;
-}

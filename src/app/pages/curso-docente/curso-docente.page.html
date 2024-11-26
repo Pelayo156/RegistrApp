@@ -18,7 +18,6 @@
       </ion-col>
     </ion-row>
 
-    <!-- Botón "Crear Clase" debajo del título -->
     <ion-row>
       <ion-col size="12" class="button-col">
         <ion-button class="create-button" (click)="toCreateClass(id_curso)">
@@ -57,13 +56,12 @@
               <!-- Botón para generar QR -->
               <ion-row class="generate-qr-row" style="text-align: center;">
                 <ion-col size="12">
-                  <ion-button (click)="generateQRCode(clase.codigo_web)">
+                  <ion-button (click)="generateQRCode(clase.codigo_web)" id="generarqr">
                     Generar QR
                   </ion-button>
                 </ion-col>
               </ion-row>
 
-              <!-- Código QR generado -->
               <div class="class-details" *ngIf="clase.showQRCode">
                 <qrcode [qrdata]="clase.codigo_web"></qrcode>
               </div>
