@@ -37,3 +37,19 @@ Para la instalación de esta aplicación deberá seguir los siguientes pasos.
    ```bash
    ionic serve
    ```
+## Enlazar proyecto a Android studio
+Para iniciar el proyecto en Andriod studio debes seguir los siguientes pasos.
+1. En el terminal debe ejecutar el siguiente código para construcción de la app (www):
+   ```bash
+   ionic build --prod
+   ```
+2. Sincronización del proyecto con Android studio:
+   ```bash
+   ionic capacitor sync android
+   ```
+3. Para hacer uso del scanner debe ejecutar en androd studio el siguiente codigo:
+   ```bash
+   npx cap open android
+   ```
+En Android studio para construir APK sigue las indicaciones:
+Dirigirse al Menú > seleccionar Build Bundle(s) / APK(s) > finalmente seleccionar Build APK(s).
