@@ -19,21 +19,21 @@ La aplicación fue creada con las siguientes tecnologías.
 - Android Studio
 
 ## Instalación
-Para la instalación de esta aplicación deberas seguir los siguientes pasos. 
+Para la instalación de esta aplicación deberá seguir los siguientes pasos. 
 
-1. Clona este repositorio.
+1. Clone este repositorio.
    ```bash
    git clone https://github.com/Pelayo156/RegistrApp.git
    ```
-2. Navega al directorio del proyecto:
+2. Navegue al directorio del proyecto:
    ```bash
    cd RegistrApp
    ```
-3. Deberás instalar las dependencias necesarias.
+3. Deberá instalar las dependencias necesarias.
    ```bash
    npm install
    ```
-4. Ejecutalo.
+4. Ejecutelo en el terminal.
    ```bash
    ionic serve
    ```
