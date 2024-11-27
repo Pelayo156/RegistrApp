@@ -1,64 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- Imagen en lugar de texto -->
+    <ion-title slot="start">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/2560px-Logo_DuocUC.svg.png" alt="Logo" class="small-image" />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content [fullscreen]="true" class="ion-text-center">
+  <form class="form card" (ngSubmit)="registerUser()">
+    <div class="card_header">
+      <h1 class="form_heading">Crear cuenta</h1>
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-   
-  </ion-header>
+    <!-- Campo RUT -->
+    <div class="field">
+      <input class="input" type="text" [(ngModel)]="user.run" name="run" placeholder="Ingrese su rut" required>
+    </div>
 
-  <ion-content padding>
-    <form class="form card" (ngSubmit)="registerUser()">
-      <div class="card_header">
-        <h1 class="form_heading">Crear cuenta</h1>
-      </div>
-      
-      <!-- Campo RUT -->
-      <div class="field">
-        <label for="run">RUT</label>
-        <input class="input" type="text" [(ngModel)]="user.run" name="run" placeholder="123456789" required>
-      </div>
+    <!-- Campo Nombre -->
+    <div class="field">
+      <input class="input" type="text" [(ngModel)]="user.nombre" name="nombre" placeholder="Ingrese su nombre" required>
+    </div>
 
-      <!-- Campo Nombre -->
-      <div class="field">
-        <label for="nombre">Nombre</label>
-        <input class="input" type="text" [(ngModel)]="user.nombre" name="nombre" placeholder="Ingrese su nombre" required>
-      </div>
+    <!-- Campo Apellido -->
+    <div class="field">
+      <input class="input" type="text" [(ngModel)]="user.apellido" name="apellido" placeholder="Ingrese su apellido" required>
+    </div>
 
-      <!-- Campo Apellido -->
-      <div class="field">
-        <label for="apellido">Apellido</label>
-        <input class="input" type="text" [(ngModel)]="user.apellido" name="apellido" placeholder="Ingrese su apellido" required>
-      </div>
+    <!-- Campo Correo -->
+    <div class="field">
+      <input class="input" type="email" [(ngModel)]="user.correo" name="correo" placeholder="Ingrese su correo" required>
+    </div>
 
-      <!-- Campo Correo -->
-      <div class="field">
-        <label for="correo">Correo</label>
-        <input class="input" type="email" [(ngModel)]="user.correo" name="correo" placeholder="Ingrese su correo" required>
-      </div>
+    <!-- Campo Código de invitación -->
+    <div class="field">
+      <input class="input" type="text" [(ngModel)]="user.codigo" name="codigo" placeholder="Ingrese código" required>
+    </div>
 
-      <!-- Campo Código de invitación -->
-      <div class="field">
-        <label for="codigo">Código de invitación</label>
-        <input class="input" type="text" [(ngModel)]="user.codigo" name="codigo" placeholder="Ingrese código" required>
-      </div>
+    <!-- Campo Perfil -->
+    <div class="field">
+      <label for="perfil">Perfil</label>
+      <ion-select id="perfil" title="Perfil" aria-labelledby="perfil-label" [(ngModel)]="user.perfil" name="perfil" required>
+        <ion-select-option value="docente">Docente</ion-select-option>
+        <ion-select-option value="estudiante">Estudiante</ion-select-option>
+      </ion-select>
+    </div>
 
-      <!-- Campo Perfil -->
-      <!-- Campo Perfil -->
-<div class="field">
-  <label for="perfil">Perfil</label>
-  <ion-select id="perfil" title="Perfil" aria-labelledby="perfil-label" [(ngModel)]="user.perfil" name="perfil" required>
-    <ion-select-option value="docente">Docente</ion-select-option>
-    <ion-select-option value="estudiante">Estudiante</ion-select-option>
-  </ion-select>
-</div>
-
-
-      <!-- Botones de acción -->
-      <div class="field">
-        <button type="submit" color="primary">Registrar</button>
-      </div>
-      <div class="field">
-        <button type="button" color="light" [routerLink]="['/login']">Volver</button>
-      </div>
-    </form>
-  </ion-content>
+    <!-- Botones de acción -->
+    <div class="field">
+      <button type="submit" color="primary">Registrar</button>
+    </div>
+    <div class="field">
+    </div>
+  </form>
 </ion-content>
+
+<!-- Footer con el botón "Volver" similar al otro código -->
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/login']">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Volver
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
