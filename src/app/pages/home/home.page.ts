@@ -1,9 +1,11 @@
 import { Component, importProvidersFrom, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint, CapacitorBarcodeScannerTypeHintALLOption } from '@capacitor/barcode-scanner';
+import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint} from '@capacitor/barcode-scanner';
 import { AlertController } from '@ionic/angular';
 import { PresenteprofeService } from 'src/app/services/presenteprofe.service';
+import {BarcodeScanner} from "@capacitor-mlkit/barcode-scanning";
+import { QrScannerService } from 'src/app/services/qr-scanner.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +17,7 @@ export class HomePage implements OnInit {
   public emailUser: string = '';
 
   // Resultado del código QR escaneado
-  public result: string = ''
+  public result: any = ''
 
   // Token del usuario autenticado
   public token: string = '';
@@ -23,14 +25,14 @@ export class HomePage implements OnInit {
   // Cursos matriculados del estudiante
   public cursos: any = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private alertController: AlertController, private presenteProfeService: PresenteprofeService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private alertController: AlertController, private presenteProfeService: PresenteprofeService, private readonly qrScannerService: QrScannerService) { }
 
+  
   async scan(): Promise<void> {
-    const result = await CapacitorBarcodeScanner.scanBarcode({
-      hint: CapacitorBarcodeScannerTypeHint.ALL
-    });
-    this.result = result.ScanResult;
+    const barcodes = await this.qrScannerService.scan() //esto abre la camara para escanear
 
+    this.result = barcodes;
+  
     // Lógica para registrar curso escaneando código QR
     this.presenteProfeService.registerAttendance(this.result, this.token).subscribe((reponse: any) => {
       alert(reponse.message);
