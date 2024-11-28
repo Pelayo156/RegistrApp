@@ -47,9 +47,9 @@ Para iniciar el proyecto en Andriod studio debes seguir los siguientes pasos.
    ```bash
    ionic capacitor sync android
    ```
-3. Para hacer uso del scanner debe ejecutar en androd studio el siguiente codigo:
+3. Utilice el siguiente comando para abrir Android Studio desde el terminal:
    ```bash
    npx cap open android
    ```
-En Android studio para construir APK sigue las indicaciones:
+En Android studio para construir la APK sigue las indicaciones:
 Dirigirse al Menú > seleccionar Build Bundle(s) / APK(s) > finalmente seleccionar Build APK(s).
