@@ -68,3 +68,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Ignorar archivos .env y otros archivos de configuración sensibles
+.env
+*.env

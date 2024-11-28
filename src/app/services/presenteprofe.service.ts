@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 import { Curso } from '../models/curso';
 import { Clase } from '../models/clase';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PresenteprofeService {
 
-  private url: string = 'https://www.presenteprofe.cl/api/v1';
+  private url: string = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
