@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
   public emailUser: string = '';
 
   // Resultado del código QR escaneado
-  public result: any = ''
+  public result: any = '';
 
   // Token del usuario autenticado
   public token: string = '';
@@ -32,10 +32,13 @@ export class HomePage implements OnInit {
     const barcodes = await this.qrScannerService.scan() //esto abre la camara para escanear
 
     this.result = barcodes;
-  
+
     // Lógica para registrar curso escaneando código QR
-    this.presenteProfeService.registerAttendance(this.result, this.token).subscribe((reponse: any) => {
-      alert(reponse.message);
+    this.presenteProfeService.registerAttendance(this.result[0], this.token).subscribe((response: any) => {
+      console.log(response);
+    console.log(this.result[0]);
+    }, (error) => {
+      console.log(error);
     });
   }
 

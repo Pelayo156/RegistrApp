@@ -88,7 +88,7 @@ export class PresenteprofeService {
       'Authorization': 'Bearer ' + token
     });
 
-    return this.http.post(`${this.url}/clases/${code}/asistencia`, { headers });
+    return this.http.post(`${this.url}/clases/${code}/asistencia`, JSON.stringify(code), { headers });
   }
 
   // Función para obtener cursos matriculados por el estudiante
