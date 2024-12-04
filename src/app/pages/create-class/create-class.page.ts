@@ -81,7 +81,10 @@ export class CreateClassPage implements OnInit {
         this.presenteProfeService.createClass(nuevaClase, this.token, this.id_curso).subscribe(response => {
           console.log(response);
           this.mostrarToast('Se ha registrado su clase correctamente');
-          this.router.navigate(['/curso-docente', this.id_curso]);
+          this.router.navigate(['/curso-docente', this.id_curso]).then(() => {
+            // Refresco pantalla para que se muestren los nuevos datos al usuario
+            window.location.reload();
+          });
         });
       }
     } else {

@@ -31,7 +31,10 @@ export class CreateCoursePage implements OnInit {
   createCourse() {
     this.presenteProfeService.createCourse(this.curso, this.token).subscribe(response => {
       console.log(response);
-      this.router.navigate(['/docente']);
+      this.router.navigate(['/docente']).then(() => {
+        // Refresco pantalla para que se muestren los nuevos datos al usuario
+        window.location.reload();
+      });
     });
   }
 }

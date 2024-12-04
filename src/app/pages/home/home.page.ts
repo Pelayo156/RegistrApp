@@ -35,8 +35,8 @@ export class HomePage implements OnInit {
 
     // Lógica para registrar curso escaneando código QR
     this.presenteProfeService.registerAttendance(this.result[0], this.token).subscribe((response: any) => {
-      console.log(response);
-    console.log(this.result[0]);
+      // Refresco pantalla para que se muestren los nuevos datos al usuario
+      window.location.reload();
     }, (error) => {
       console.log(error);
     });
