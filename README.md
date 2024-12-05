@@ -53,3 +53,9 @@ Para iniciar el proyecto en Andriod studio debes seguir los siguientes pasos.
    ```
 En Android studio para construir la APK sigue las indicaciones:
 Dirigirse al Menú > seleccionar Build Bundle(s) / APK(s) > finalmente seleccionar Build APK(s).
+
+### APK
+Para descargar la apk, seguir el enlace:
+``` bash
+https://github.com/Pelayo156/RegistrApp/tree/520a9c497c319b0db2ca2b8cedc0b3acf28787f2/APK
+```
